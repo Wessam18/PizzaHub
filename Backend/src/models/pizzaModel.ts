@@ -10,7 +10,7 @@ export interface IPizzas extends Document {
     ssize: string;
     msize: string;
     lsize: string;
-    role: string;
+    //role: string;
 }
 
 const pizzasSchema = new Schema<IPizzas>({
@@ -18,11 +18,12 @@ const pizzasSchema = new Schema<IPizzas>({
     image: { type: String, required: true},
     details: { type: String, required: true},
     sprice: { type: Number, required: true},
+    mprice: { type: Number, required: true},
     lprice: { type: Number, required: true},
     ssize: { type: String, required: true},
     msize: { type: String, required: true},
     lsize: { type: String, required: true},
-    role: { type: String, required: true, defualt: "pizza"}
+   // role: { type: String, required: true, defualt: "pizza"}
 
 })
 
