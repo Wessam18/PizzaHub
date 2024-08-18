@@ -1,6 +1,7 @@
 import { getActiveCart, clearUserCart } from './CartService';
 import { sendEmail } from '../src/MiddleWares/SendEmail';
 import { CartModel } from '../models/CartModel';
+import OrderModel from '../models/OrderModel';
 
 interface OrderDetails {
     userId: string;
@@ -65,7 +66,23 @@ const confirmOrder = async (orderDetails: OrderDetails) => {
             subject: 'Order Confirmation',
             html: emailHtml,
         });
+        const newOrder = new OrderModel({
+            userId: userId,
+            name: name,
+            email: email,
+            phone: phoneNumber,
+            address: address,
+            items: cart.items.map(item => ({
+                title: item.title,
+                quantity: item.quantity,
+                price: item.price,
+                size: item.size
+            })),
+            total: cart.total,
+            status: 'completed'
+        });
         
+        await newOrder.save();
         // Mark the cart as completed
         cart.status = 'completed'; // Mark as completed
         await cart.save(); // Save the updated cart
