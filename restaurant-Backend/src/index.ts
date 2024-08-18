@@ -1,10 +1,10 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import usersRoutes from '../routes/userRoutes'
-import drinksRoutes from '../routes/drinkRoutes'
+import drinksRoutes from '../routes/drinksRoutes'
 import pizzasRoute from '../routes/pizzaRoute'
 import appitizersRoute from '../routes/appitizerRoute'
-import { seedInitialDrinks } from "../service/drinksService"
+import { seedInitialDrinks } from "../service/drinkService"
 import { seedInitialPizzas } from '../service/pizzaService';
 import { seedInitialAppitizers } from '../service/appitizerService';
 
