@@ -1,5 +1,5 @@
 import express from 'express'
-import { getAllAppitizers } from '../services/appitizerServise'
+import { getAllAppitizers } from '../services/appitizerService'
 const  router = express.Router()
 
 router.get('/', async(req, res) =>  {
