@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
-import { generateRandomNumbers, storeVerificationCodes, verifyCode } from '../MiddleWares//VreifyEmail'
+import { generateRandomNumbers, storeVerificationCodes, verifyCode } from './VreifyEmail'
 dotenv.config();
 
 interface EmailOptions {
