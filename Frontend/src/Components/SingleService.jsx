@@ -4,7 +4,7 @@ import { CartContext } from './tools/CartContext';
 
 const SingleService = ({ data }) => {
     // Destructuring data, including the title
-    const { title, image, details, _id: id, sprice, mprice, lprice, ssize, msize, lsize, price } = data;
+    const { title, image, details, _id: id, sprice, mprice, lprice, ssize, msize, lsize, price, itemType } = data;
 
     const { addToCart } = useContext(CartContext);
 
