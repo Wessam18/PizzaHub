@@ -3,24 +3,19 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CartContext } from './tools/CartContext';
 
 const SingleService = ({ data }) => {
-    // Destructuring data, including the title
-    const { title, image, details, _id: id, sprice, mprice, lprice, ssize, msize, lsize, price, itemType } = data;
+    const { title, image, details, _id: id, sprice, mprice, lprice, ssize, msize, lsize, price } = data;
 
     const { addToCart } = useContext(CartContext);
 
     const getPrice = (size) => {
-        if (itemType === 'Pizza') {
-            if (size === ssize && sprice !== undefined) {
-                return sprice;
-            } else if (size === msize && mprice !== undefined) {
-                return mprice;
-            } else if (size === lsize && lprice !== undefined) {
-                return lprice;
-            } else {
-                return 0; // Default to 0 if no matching size
-            }
+        if (size === ssize && sprice !== undefined) {
+            return sprice;
+        } else if (size === msize && mprice !== undefined) {
+            return mprice;
+        } else if (size === lsize && lprice !== undefined) {
+            return lprice;
         } else {
-            return price || 0; // For Drinks and Appetizers, use the flat price
+            return price || 0;
         }
     };
 
@@ -41,16 +36,7 @@ const SingleService = ({ data }) => {
     };
 
     const handleAddToCart = () => {
-        const itemToAdd = {
-            id: id,
-            name: title,  // Ensure title is correctly used here
-            price: currentPrice,
-            itemType: itemType,
-            size: itemType === 'Pizza' ? size : null,
-            quantity: quantity,
-        };
-
-        addToCart(itemToAdd);
+        addToCart({ id, title, size, quantity, price: currentPrice * quantity });
     };
 
     return (
@@ -86,5 +72,5 @@ const SingleService = ({ data }) => {
         </div>
     );
 };
-//my comment
+// fdddd
 export default SingleService;
