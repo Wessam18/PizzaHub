@@ -42,8 +42,8 @@ const App = () => {
           </Route>
         </Route>
         <Route path="users/:id/verify/:token" element={<Email/>}></Route>
-        <Route path="/success" element={<Success />} />
         <Route path="/ResetPassword/:id/:token" element={<ResetPassword/>} />
+        <Route path="/success" element={<Success />} />
       </Routes>
     </Router>
     </AuthProvider>
