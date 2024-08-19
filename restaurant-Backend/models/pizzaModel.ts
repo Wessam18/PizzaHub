@@ -29,3 +29,5 @@ const pizzasSchema = new Schema<IPizzas>({
 
 const pizzasModel = mongoose.model<IPizzas>('pizzas', pizzasSchema)
 export default pizzasModel;
+
+

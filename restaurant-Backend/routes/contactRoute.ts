@@ -1,12 +1,13 @@
 import express from 'express';
-import handleContactForm from '../service/contactService';
-import { ExtendRequest } from '../src/types/ExtendReq'
+import handleContactForm from '../service/contactService'; // Adjust path if needed
+import { ExtendRequest } from '../src/types/ExtendReq';
 
 const router = express.Router();
 
 router.post('/', async (req: ExtendRequest, res) => {
     const { email, message } = req.body;
 
+    // Validate request body
     if (!email || !message) {
         return res.status(400).send({ error: 'Missing required fields' });
     }

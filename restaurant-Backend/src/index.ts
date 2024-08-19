@@ -11,6 +11,7 @@ import { seedInitialAppitizers } from '../service/appitizerService';
 import cartRoutes from '../routes/CartRoutes'
 import cors from 'cors';
 import orderRoutes from '../routes/OrderRoutes'
+import contactRoute from '../routes/contactRoute'
 
 
 const app = express()
@@ -31,11 +32,13 @@ seedInitialPizzas();
 seedInitialAppitizers();
 
 app.use('/users', usersRoutes);
-app.use('/drinks', drinksRoutes);
+app.use('/drink', drinksRoutes);
 app.use('/cart', cartRoutes);
 app.use('/confirm', orderRoutes)
 app.use('/pizza', pizzasRoute);
 app.use('/appitizer', appitizersRoute)
+app.use('/contact', contactRoute); // Use the contact route under /api
+
 
 
 app.listen(port, () =>{

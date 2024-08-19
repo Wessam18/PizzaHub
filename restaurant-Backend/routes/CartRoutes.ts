@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import { getActiveCart }  from '../service/CartService';
 import validateJWT from '../src/MiddleWares/validateJWT';
 import { ExtendRequest } from '../src/types/ExtendReq';
-import appetizersModal from '../models/AppetizersModel';
+import appetizersModal from '../models/appitizerModel';
 
 import { addItemToCart } from '../service/CartService';
 

@@ -1,7 +1,7 @@
 import { getActiveCart, clearUserCart } from './CartService';
 import { sendEmail } from '../src/MiddleWares/SendEmail';
-import { CartModel } from '../models/CartModel';
-import OrderModel from '../models/OrderModel';
+import { CartModel } from '../models/cartModel';
+import OrderModel from '../models/orderModel';
 
 interface OrderDetails {
     userId: string;

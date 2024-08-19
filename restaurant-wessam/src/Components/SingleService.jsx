@@ -3,7 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CartContext } from './tools/CartContext';
 
 const SingleService = ({ data }) => {
-    const { title, image, details, id, sprice, mprice, lprice, ssize, msize, lsize, price } = data;
+    const { title, image, details, _id: id, sprice, mprice, lprice, ssize, msize, lsize, price } = data;
 
     const { addToCart } = useContext(CartContext);
 

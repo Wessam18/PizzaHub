@@ -5,6 +5,7 @@ export interface IAppitizers extends Document {
     image: string;
     details: string;
     price: number;
+    
 }
 
 const appitizersSchema = new Schema<IAppitizers>({

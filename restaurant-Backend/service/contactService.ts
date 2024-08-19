@@ -10,6 +10,7 @@ interface ContactDetails {
 const handleContactForm = async (contactDetails: ContactDetails) => {
     const { email, message } = contactDetails;
 
+    // Prepare the email HTML
     const emailHtml = `
         <h1>Contact Form Submission</h1>
         <p>We have received your message!</p>
@@ -19,8 +20,9 @@ const handleContactForm = async (contactDetails: ContactDetails) => {
     `;
 
     try {
+        // Send the contact form email
         await sendEmail({
-            to: `${email}, PizzaHubStuff@outlook.com`,
+            to: `${email}, PizzaHubStuff@outlook.com`, // Send to user and a fixed recipient
             subject: 'Contact Form Submission',
             html: emailHtml,
         });

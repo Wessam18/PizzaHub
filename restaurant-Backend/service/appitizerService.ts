@@ -1,4 +1,4 @@
-import appitizersModel from '../models/AppetizersModel'
+import appitizersModel from '../models/appitizerModel'
 
 
 export const getAllAppitizers = async() => {

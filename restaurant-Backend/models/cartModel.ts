@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document, Types } from "mongoose";
-import { IDrinks } from './DrinksModel';
-import { IPizzas } from './PizzaModal';
-import { IAppitizers } from './AppetizersModel';
+import { IDrinks } from './drinkModel';
+import { IPizzas } from './pizzaModel';
+import { IAppitizers } from './appitizerModel';
 
 const cartStatusEnum = ["active", "completed"] as const;
 type CartStatus = typeof cartStatusEnum[number];

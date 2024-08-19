@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
-import { ICart, CartModel, ICartItem } from '../models/CartModel';
-import  pizzasModel from '../models/PizzaModal';
-import  appetizersModal from '../models/AppetizersModel';
-import drinksModel, { IDrinks }  from '../models/DrinksModel';
-import { IAppitizers } from '../models/AppetizersModel';
-import { IPizzas} from '../models/PizzaModal';
+import { ICart, CartModel, ICartItem } from '../models/cartModel';
+import  pizzasModel from '../models/pizzaModel';
+import  appetizersModal from '../models/appitizerModel';
+import drinksModel, { IDrinks }  from '../models/drinkModel';
+import { IAppitizers } from '../models/appitizerModel';
+import { IPizzas} from '../models/pizzaModel';
 import { Types } from 'mongoose';
 
 interface CreateCartUser {

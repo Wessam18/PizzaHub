@@ -1,4 +1,4 @@
-import pizzasModel from '../models/PizzaModal';
+import pizzasModel from '../models/pizzaModel';
 
 
 export const getAllPizzas = async() => {
@@ -8,7 +8,7 @@ export const getAllPizzas = async() => {
 export const seedInitialPizzas = async () => {
     const products = [
       {
-        image: "https://www.papajohnsegypt.com/images/Products/Margherita.jpg",
+        image: "https://store.eurostarfoods.co.uk/cdn/shop/articles/Pizza-Margarita-Frumenta_900x.jpg?v=1631279490",
         title: "Margherita",
         details: "A traditional Margherita pizza with fresh mozzarella, basil, and tomatoes.",
         sprice: 80,
@@ -19,7 +19,7 @@ export const seedInitialPizzas = async () => {
         lsize: "Large",
       },
       {
-        image: "https://www.papajohnsegypt.com/images/Products/6-Cheese.jpg",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy84Loxp9I5SltGOfUU89qCStK6hyXSiolQgLF6Xl1yEAcngyiBOnIkguDiPaPDsJwTDs&usqp=CAU",
         title: "Six Cheese",
         details: "A pizza loaded with six different cheeses for the ultimate cheesy experience.",
         sprice: 85,
@@ -30,7 +30,7 @@ export const seedInitialPizzas = async () => {
         lsize: "Large",
       },
       {
-        image: "https://www.papajohnsegypt.com/images/Products/cheese-burger.jpg",
+        image: "https://topsecretrecipes.com/images/product/dominos-cheeseburger-pizza-copycat-recipe.jpg",
         title: "Cheese Burger",
         details: "All the flavors of a cheeseburger on a pizza, with plenty of cheese.",
           sprice: 90,
@@ -41,7 +41,7 @@ export const seedInitialPizzas = async () => {
           lsize: "Large",
       },
       {
-        image: "https://www.papajohnsegypt.com/images/Products/Smoky-Ranch.jpg",
+        image: "https://bakingamoment.com/wp-content/uploads/2024/04/IMG_3069-chicken-bacon-ranch-pizza.jpg",
         title: "Smoky Ranch",
         details: "Smoky flavors paired with a creamy ranch base for a unique taste.",
         sprice: 95,
@@ -52,7 +52,7 @@ export const seedInitialPizzas = async () => {
         lsize: "Large",
       },
       {
-        image: "https://www.papajohnsegypt.com/images/Products/Little-Italy.jpg",
+        image: "https://www.papajohnsegypt.com/images/Products/Garden-Special.jpg",
         title: "Little Italy",
         details: "A pizza inspired by the flavors of Italy, with fresh tomatoes and basil.",
         sprice: 100,
@@ -63,7 +63,7 @@ export const seedInitialPizzas = async () => {
         lsize: "Large",
       },
       {
-        image: "https://www.papajohnsegypt.com/images/Products/Garden-Special.jpg",
+        image: "https://img.freepik.com/premium-photo/pizza-with-mushrooms-mushrooms-it-sits-table_985633-20430.jpg?w=740",
         title: "Garden Special",
         details: "Tomato, Onions, Green Pepper, Fresh Mushroom, Black Olives",
         sprice: 105,
@@ -74,7 +74,7 @@ export const seedInitialPizzas = async () => {
         lsize: "Large",
       },
       {
-        image: "https://www.papajohnsegypt.com/images/Products/Chicken-Ranch.jpg",
+        image: "https://images.zyda.co/cdn-cgi/image/width=1080,quality=75,f=auto,metadata=none/photos/menu_items/photo_urls/e6fedec2-0bf3-4a92-af7b-b41718ea924b/original/%D8%B1%D8%A7%D9%86%D8%B4_%D8%AA%D8%B4%D9%83%D9%86_%D8%A8%D9%8A%D9%83%D9%88%D9%86.jpg?1707316270",
         title: "Chicken Ranch",
         details: "Tender chicken topped with a creamy ranch sauce and fresh vegetables.",
         sprice: 110,
@@ -85,7 +85,7 @@ export const seedInitialPizzas = async () => {
         lsize: "Large",
       },
       {
-        image: "https://www.papajohnsegypt.com/images/Products/Shrimps.jpg",
+        image: "https://img.freepik.com/premium-photo/pizza-with-shrimps-kalamata-olives-pesto-mozzarella-cheese-basil-cherry-tomatoes-chili_162695-56089.jpg?ga=GA1.1.1105971845.1724013645&semt=ais_hybrid",
         title: "Shrimps",
         details: "Shrimps, Tomato, Onions, Green Pepper.",
         sprice: 115,
@@ -107,7 +107,7 @@ export const seedInitialPizzas = async () => {
         lsize: "Large",
       },
       {
-        image: "https://www.papajohnsegypt.com/images/Products/Spicy-Pepperoni-Ranch-Pizza.jpg",
+        image: "https://img.freepik.com/premium-photo/pepperoni-pizza-with-mozzarella-cheese-tomatoes-basil-black-background_1308157-112913.jpg?w=740",
         title: "Spicy Pepperoni Ranch",
         details: "Pepperoni pizza with a kick, combined with creamy ranch sauce.",
         sprice: 125,
