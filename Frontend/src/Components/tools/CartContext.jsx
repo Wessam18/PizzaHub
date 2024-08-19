@@ -8,8 +8,17 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (item) => {
     setCartItems((prevItems) => {
+      // Check if the item type is 'Drink' or 'Appetizer' and exclude size if so
+      const isDrinkOrAppetizer = item.itemType === 'Drink' || item.itemType === 'Appetizer';
+      const itemToAdd = isDrinkOrAppetizer
+        ? { ...item, title: item.name || 'Default Title', size: undefined } // Remove size
+        : { ...item, title: item.name || 'Default Title' }; // Keep size
+
       const existingItemIndex = prevItems.findIndex(
-        (prevItem) => prevItem.id === item.id && prevItem.size === item.size
+        (prevItem) =>
+          prevItem.id === item.id &&
+          prevItem.size === item.size &&
+          prevItem.itemType === item.itemType
       );
 
       if (existingItemIndex !== -1) {
@@ -17,9 +26,7 @@ export const CartProvider = ({ children }) => {
         updatedItems[existingItemIndex].quantity += item.quantity;
         return updatedItems;
       } else {
-        console.log(item); // Add this in your Cart component to see the structure of item
-
-        return [...prevItems, { ...item, title: item.title }];
+        return [...prevItems, itemToAdd];
       }
     });
   };

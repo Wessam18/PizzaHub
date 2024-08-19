@@ -3,19 +3,24 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CartContext } from './tools/CartContext';
 
 const SingleService = ({ data }) => {
-    const { title, image, details, _id: id, sprice, mprice, lprice, ssize, msize, lsize, price } = data;
+    // Destructuring data, including the title
+    const { title, image, details, _id: id, sprice, mprice, lprice, ssize, msize, lsize, price, itemType } = data;
 
     const { addToCart } = useContext(CartContext);
 
     const getPrice = (size) => {
-        if (size === ssize && sprice !== undefined) {
-            return sprice;
-        } else if (size === msize && mprice !== undefined) {
-            return mprice;
-        } else if (size === lsize && lprice !== undefined) {
-            return lprice;
+        if (itemType === 'Pizza') {
+            if (size === ssize && sprice !== undefined) {
+                return sprice;
+            } else if (size === msize && mprice !== undefined) {
+                return mprice;
+            } else if (size === lsize && lprice !== undefined) {
+                return lprice;
+            } else {
+                return 0; // Default to 0 if no matching size
+            }
         } else {
-            return price || 0;
+            return price || 0; // For Drinks and Appetizers, use the flat price
         }
     };
 
@@ -36,7 +41,16 @@ const SingleService = ({ data }) => {
     };
 
     const handleAddToCart = () => {
-        addToCart({ id, title, size, quantity, price: currentPrice * quantity });
+        const itemToAdd = {
+            id: id,
+            name: title,  // Ensure title is correctly used here
+            price: currentPrice,
+            itemType: itemType,
+            size: itemType === 'Pizza' ? size : null,
+            quantity: quantity,
+        };
+
+        addToCart(itemToAdd);
     };
 
     return (

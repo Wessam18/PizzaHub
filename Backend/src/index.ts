@@ -32,12 +32,12 @@ seedInitialPizzas();
 seedInitialAppitizers();
 
 app.use('/users', usersRoutes);
-app.use('/drink', drinksRoutes);
+app.use('/drinks', drinksRoutes);
 app.use('/cart', cartRoutes);
 app.use('/confirm', orderRoutes)
 app.use('/pizza', pizzasRoute);
 app.use('/appitizer', appitizersRoute)
-app.use('/contact', contactRoute); // Use the contact route under /api
+app.use('/contact', contactRoute);
 
 
 
