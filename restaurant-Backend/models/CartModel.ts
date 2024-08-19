@@ -7,6 +7,7 @@ const cartStatusEnum = ["active", "completed"] as const;
 type CartStatus = typeof cartStatusEnum[number];
 
 export interface ICartItem {
+    itemId?: string;
     drink?: IDrinks;
     pizza?: IPizzas;
     appetizers?: IAppitizers;

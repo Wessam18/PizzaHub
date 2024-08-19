@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Spinner from './tools/Spinner';
 import { useAuth } from './Context/AuthContext';
-
 const Signup = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [name, setName] = useState('');
@@ -14,7 +13,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const containerRef = useRef(null);
-  const registerBtnRef = useRef(null);
+    const registerBtnRef = useRef(null);
   const loginBtnRef = useRef(null);
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
@@ -62,7 +61,7 @@ const Signup = () => {
         if (response.status === 200) {
           setIsAuthenticated(true);
           setMessageType('success');
-          setMessage('Account created successfully! You can now sign in.');
+          setMessage('Account created successfully! Please check your email to verify your account.');
           setLoading(false);
           loginBtnRef.current.click();
           const token = await response.data;
@@ -109,7 +108,6 @@ const Signup = () => {
     }
   }
 
-
   const handleSignInSubmit = async (event) => {
     event.preventDefault();
     if (event.target.checkValidity()) {
@@ -135,10 +133,14 @@ const Signup = () => {
           } else {
             setMessageType('error');
             setMessage("Token not received. Please try again.");
-          }
+        }
+       } else if (response.status === 403) {
+        setMessageType('error');
+        setMessage("Please verify your email before logging in.");
         } else {
           console.error('Unexpected response status:', response.status);
-          alert('Login failed. Please check your credentials.');
+          setMessageType('error');
+          setMessage('Login failed. Please check your credentials.');
         }
       } catch (error) {
         setMessageType('error');
@@ -252,7 +254,7 @@ const Signup = () => {
               onChange={(e) => setPassword(e.target.value)}
               required 
             />
-            <a href="#">Forget Your Password?</a>
+            <Link to="/ForgotPassword">Forget Your Password?</Link>
             <button type="submit" disabled={loading}>Sign In</button>
           </form>
         </div>

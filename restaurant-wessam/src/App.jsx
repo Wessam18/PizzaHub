@@ -14,6 +14,11 @@ import Dashboard from "./Components/Dashboard";
 import Account from './Components/Account';
 import AuthProvider from "./Components/Context/AuthProvider";
 import ProtectedRoutes from "./Components/Context/ProtectedRoutes";
+import Email from "./Components/Email"; 
+import ForgotPassword from "./Components/ForgotPassword";
+import ResetPassword from "./Components/ResetPassword";
+import Success from "./Components/Success";
+
 const App = () => {
   return (
     <AuthProvider>
@@ -28,13 +33,17 @@ const App = () => {
           <Route path="pizzas" element={<Pizzas />} />
           <Route path="appetizers" element={<Appetizers />} />
           <Route path="drinks" element={<Drinks />} />
+          <Route path="/ForgotPassword" element={<ForgotPassword/>} />
           <Route element={<ProtectedRoutes/>}>
           <Route path="account"element={<Account />}/>
           <Route path="contact" element={<Contact />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="dashboard" element={<Dashboard />} />          
+          <Route path="dashboard" element={<Dashboard />} />
           </Route>
         </Route>
+        <Route path="users/:id/verify/:token" element={<Email/>}></Route>
+        <Route path="/success" element={<Success />} />
+        <Route path="/ResetPassword/:id/:token" element={<ResetPassword/>} />
       </Routes>
     </Router>
     </AuthProvider>

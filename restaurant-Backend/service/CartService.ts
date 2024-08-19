@@ -30,7 +30,7 @@ export const getActiveCart = async ({userId}: GetActiveCart)=>{
 
 interface AddItemToCartParams {
     userId: string;
-    itemId: any;
+    itemId: string;
     quantity: number;
     size?: 'Small' | 'Medium' | 'Large';
     itemType: 'Pizza' | 'Drinks' | 'Appetizers';
@@ -83,7 +83,7 @@ export const addItemToCart = async ({ userId, itemId, quantity, size, itemType }
 
     const totalPrice = price * quantity;
     cart.items.push({
-        [itemType]: itemId,
+        itemId: itemId,
         price: totalPrice,
         quantity,
         title,

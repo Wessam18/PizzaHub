@@ -73,6 +73,9 @@ const confirmOrder = async (orderDetails: OrderDetails) => {
             phone: phoneNumber,
             address: address,
             items: cart.items.map(item => ({
+                pizza: item.pizza,
+                appetizers: item.appetizers,
+                drink: item.drink,
                 title: item.title,
                 quantity: item.quantity,
                 price: item.price,

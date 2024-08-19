@@ -8,6 +8,7 @@ export interface IUser extends Document {
     role: 'user' | 'admin';
     createdAt: Date;
     updatedAt: Date;
+    verified: boolean;
 }
 
 const userSchema = new Schema<IUser>({
@@ -15,7 +16,8 @@ const userSchema = new Schema<IUser>({
     email: { type: String, required: true, unique:true },
     phoneNumber: { type: String, required: true, unique:true },
     password: { type: String, required: true },
-    role: { type: String, enum: ['user', 'admin'], default: 'user' }
+    role: { type: String, enum: ['user', 'admin'], default: 'user' },
+    verified: { type: Boolean, default: false },
 }, { timestamps: true})
 
 const userModel = mongoose.model<IUser>('User', userSchema)
