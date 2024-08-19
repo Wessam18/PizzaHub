@@ -1,64 +1,123 @@
 import userModel from "../models/userModel";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import crypto from 'crypto';
+import VreifyEmail from "../src/MiddleWares/SendVrifyMail";
+const  Token = require('../models/token');
 
-interface RegisterParams {
-  name: string;
-  email: string;
-  phoneNumber: string;
-  password: string;
-}
+const generateToken = () => crypto.randomBytes(20).toString('hex');
 
-export const register = async ({
-  name,
-  email,
-  phoneNumber,
-  password,
-}: RegisterParams) => {
-  const findUserByEmail = await userModel.findOne({ email });
-  if (findUserByEmail) {
-    return { data: "Email Already Exists!", statusCode: 400 };
-  }
-  const findUserByPhone = await userModel.findOne({ phoneNumber });
-  if (findUserByPhone) {
-    return { data: "Phone Number Already Exists!", statusCode: 400 };
-  }
-  const hashPass = await bcrypt.hash(password, 10);
-  const newUser = new userModel({
-    name,
-    email,
-    phoneNumber,
-    password: hashPass,
-  });
-  await newUser.save();
-  return { data: generateJWT({ name, email, phoneNumber }), statusCode: 200 };
+const generateJWT = (data) => {
+    return jwt.sign(data, process.env.JWT_SECRET || "default_secret_key", { expiresIn: "24h" });
 };
 
-interface LoginParams {
-  email: string;
-  password: string;
-}
+export const register = async ({ name, email, phoneNumber, password }) => {
+    const findUserByEmail = await userModel.findOne({ email });
+    if (findUserByEmail) {
+        return { data: "Email Already Exists!", statusCode: 400 };
+    }
+    
+    const findUserByPhone = await userModel.findOne({ phoneNumber });
+    if (findUserByPhone) {
+        return { data: "Phone Number Already Exists!", statusCode: 400 };
+    }
 
-export const signin = async ({ email, password }: LoginParams) => {
-  const findUser = await userModel.findOne({ email });
-  if (!findUser) {
-    return { data: "Incorrect Email Or Password", statusCode: 400 };
-  }
-  const MatchPass = await bcrypt.compare(password, findUser.password);
-  if (MatchPass) {
-    return {
-      data: generateJWT({
-        name: findUser.name,
-        email: findUser.email,
-        phoneNumber: findUser.phoneNumber,
-      }),
-      statusCode: 200,
+    const hashPass = await bcrypt.hash(password, 10);
+    const verificationToken = generateToken();
+    const newUser = new userModel({
+        name,
+        email,
+        phoneNumber,
+        password: hashPass,
+        verified: false // Ensure user is not verified upon registration
+    });
+    
+    await newUser.save();
+    
+    const token = new Token({
+        userId: newUser._id,
+        token: verificationToken
+    });
+    
+    await token.save();
+
+    const verificationLink = `http://localhost:5173/users/${newUser._id}/verify/${verificationToken}`;
+    const emailOptions = {
+        to: email,
+        subject: 'Please verify your email address',
+        html: `<p>Click <a href="${verificationLink}">here</a> to verify your email address.</p>`,
     };
-  }
-  return { data: "Incorrect Email Or Password", statusCode: 400 };
+    
+    await VreifyEmail(emailOptions);
+
+    return { data: "Verification email sent. Please check your inbox.", statusCode: 200 };
 };
-const generateJWT = (data: any) => {
-  return jwt.sign(data, "F6F5BB625C8298836B7574DF71DFD", { expiresIn: "24h" });
+
+export const signin = async ({ email, password }) => {
+  try {
+      // Find the user by email
+      const findUser = await userModel.findOne({ email });
+      
+      // If user is not found, return an error
+      if (!findUser) {
+          return { data: "Incorrect email or password", statusCode: 400 };
+      }
+
+      // If the user is not verified
+      if (!findUser.verified) {
+          // Check if there's already a verification token for this user
+          const existingToken = await Token.findOne({ userId: findUser._id });
+          
+          if (!existingToken) {
+              // Generate a new verification token if not already existing
+              const verificationToken = generateToken();
+              const token = new Token({
+                  userId: findUser._id,
+                  token: verificationToken
+              });
+              await token.save();
+
+              // Send verification email
+              const verificationLink = `http://localhost:5173/users/${findUser._id}/verify/${verificationToken}`;
+              const emailOptions = {
+                  to: email,
+                  subject: 'Please verify your email address',
+                  html: `<p>Click <a href="${verificationLink}">here</a> to verify your email address.</p>`,
+              };
+              await VreifyEmail(emailOptions);
+          }
+
+          // Inform user to check their email
+          return { data: "An email was sent to your account", statusCode: 400 };
+      }
+
+      // If user is verified, check the password
+      const isMatch = await bcrypt.compare(password, findUser.password);
+      if (!isMatch) {
+          return { data: "Incorrect email or password", statusCode: 400 };
+      }
+
+      // Generate and return JWT token
+      const token = generatedJWT({
+          name: findUser.name,
+          email: findUser.email,
+          phoneNumber: findUser.phoneNumber,
+      });
+
+      return {
+          data: token,
+          statusCode: 200,
+      };
+  } catch (error) {
+      console.error('Error during sign-in:', error);
+      return { data: "Server error", statusCode: 500 };
+  }
+};
+
+const generatedJWT = (data: any) => {
+  return jwt.sign(data, process.env.JWT_SECRET || "default_secret_key", {
+    expiresIn: "24h",
+  });
 };
 
 interface UpdateUserParams {
