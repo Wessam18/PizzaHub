@@ -137,7 +137,7 @@ const Dashboard = () => {
           <tbody>
             {cartItems.map((item) => (
               <tr key={`${item.id}-${item.size}`} className="hover:bg-gray-100">
-                <td className="py-4 px-6 border-b border-gray-300">{item.title}</td>
+                <td className="py-4 px-6 border-b border-gray-300">{item.name}</td>
                 <td className="py-4 px-6 border-b border-gray-300">{item.size}</td>
                 <td className="py-4 px-6 border-b border-gray-300">${item.price.toFixed(2)}</td>
                 <td className="py-4 px-6 border-b border-gray-300">{item.quantity}</td>

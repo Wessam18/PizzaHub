@@ -17,6 +17,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/6-Cheese.jpg",
@@ -28,6 +29,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/cheese-burger.jpg",
@@ -39,6 +41,7 @@ export const seedInitialPizzas = async () => {
           ssize: "Small",
           msize: "Medium",
           lsize: "Large",
+          itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Smoky-Ranch.jpg",
@@ -50,6 +53,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Little-Italy.jpg",
@@ -61,6 +65,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Garden-Special.jpg",
@@ -72,6 +77,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Chicken-Ranch.jpg",
@@ -83,6 +89,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Shrimps.jpg",
@@ -94,6 +101,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Mexican-Ole.jpg",
@@ -105,6 +113,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Spicy-Pepperoni-Ranch-Pizza.jpg",
@@ -116,6 +125,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Chicken-BBQ.jpg",
@@ -127,6 +137,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
         },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Buffalo-Poppers-Pizza.jpg",
@@ -138,6 +149,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
         ];
 

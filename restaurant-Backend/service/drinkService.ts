@@ -12,16 +12,19 @@ export const seedInitialDrinks = async () => {
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbc4Z7DfLx5tRA2RjS7LwxjtiP4Sq-8yZR_4Vk1RflU_7zlMyeE-LDlG2tLTf6TQ4gtgc&usqp=CAU",
             title: "Pepsi",
             price: 20,
+            itemType: 'Drinks'
           },
           {
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg1rhfN19UUm8rHHpq6yvbTCwJ_YlKfUS9-vSI-518wfzvChXQaqihxDanz-14VZhE8S8&usqp=CAU",
             title: "Mirinda",
             price: 20,
+            itemType: "Drinks"
           },
           {
             image: "https://qne.com.pk/cdn/shop/products/aquafina2.png?v=1642574856",
             title: "Mineral Water",
             price: 20,
+            itemType: "Drinks"
           },
         ];
 
