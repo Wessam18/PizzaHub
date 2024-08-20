@@ -41,7 +41,7 @@ export const seedInitialPizzas = async () => {
           lsize: "Large",
       },
       {
-        image: "https://bakingamoment.com/wp-content/uploads/2024/04/IMG_3069-chicken-bacon-ranch-pizza.jpg",
+        image: "https://img.freepik.com/premium-photo/delicious-chicken-pizza-with-white-sauce-fresh-parsley_1001175-38404.jpg?w=996",
         title: "Smoky Ranch",
         details: "Smoky flavors paired with a creamy ranch base for a unique taste.",
         sprice: 95,
