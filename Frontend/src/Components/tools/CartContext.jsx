@@ -11,8 +11,8 @@ export const CartProvider = ({ children }) => {
       // Check if the item type is 'Drink' or 'Appetizer' and exclude size if so
       const isDrinkOrAppetizer = item.itemType === 'Drink' || item.itemType === 'Appetizer';
       const itemToAdd = isDrinkOrAppetizer
-        ? { ...item, title: item.name || 'Default Title', size: undefined } // Remove size
-        : { ...item, title: item.name || 'Default Title' }; // Keep size
+        ? { ...item, title: item.title || 'Default Title', size: undefined } // Remove size
+        : { ...item, title: item.title || 'Default Title' }; // Keep size
 
       const existingItemIndex = prevItems.findIndex(
         (prevItem) =>

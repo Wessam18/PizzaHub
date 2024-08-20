@@ -1,18 +1,17 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { CartContext } from './tools/CartContext';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Dashboard = () => {
-  const { cartItems, cartTotalPrice } = useContext(CartContext);
-
-  // State to store user information
+  const { cartItems, cartTotalPrice, token } = useContext(CartContext);
   const [userInfo, setUserInfo] = useState({
     name: '',
-    email: '',
+    email: '', // This will be fetched from the backend
     phone: '',
     address: ''
   });
 
-  // State to manage confirmation message and errors
   const [orderConfirmed, setOrderConfirmed] = useState(false);
   const [errors, setErrors] = useState({
     name: '',
@@ -20,6 +19,26 @@ const Dashboard = () => {
     phone: '',
     address: ''
   });
+
+  const navigate = useNavigate();
+
+  // Fetch the user's email (assuming it's stored in the backend)
+  useEffect(() => {
+    const fetchUserEmail = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/user/email', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        setUserInfo(prevState => ({ ...prevState, email: response.data.email }));
+      } catch (error) {
+        console.error('Failed to fetch user email:', error);
+      }
+    };
+
+    fetchUserEmail();
+  }, [token]);
 
   // Handle input changes
   const handleInputChange = (e) => {
@@ -40,17 +59,35 @@ const Dashboard = () => {
   };
 
   // Handle form submission
-  const handleConfirmOrder = (e) => {
+  const handleConfirmOrder = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      setOrderConfirmed(true);
-      // Reset form after confirmation
-      setUserInfo({
-        name: '',
-        email: '',
-        phone: '',
-        address: ''
-      });
+      try {
+        await axios.post('http://localhost:5000/order', {
+          name: userInfo.name,
+          email: userInfo.email,
+          phone: userInfo.phone,
+          address: userInfo.address
+        }, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        setOrderConfirmed(true);
+        // Reset form after confirmation
+        setUserInfo({
+          name: '',
+          email: '',
+          phone: '',
+          address: ''
+        });
+        navigate('/dashboard'); // Navigate to dashboard or another page
+      } catch (error) {
+        console.error('Error confirming order:', error);
+        setErrors({ ...errors, general: 'Failed to confirm order' });
+      }
     }
   };
 
