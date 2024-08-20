@@ -13,7 +13,7 @@ import Drinks from "./Components/Drinks";
 import Dashboard from "./Components/Dashboard";
 import Account from './Components/Account';
 import AuthProvider from "./Components/Context/AuthProvider";
-import ProtectedRoutes from "./Components/Context/ProtectedRoutes";
+// import ProtectedRoutes from "./Components/Context/ProtectedRoutes";
 import Email from "./Components/Email"; 
 import ForgotPassword from "./Components/ForgotPassword";
 import ResetPassword from "./Components/ResetPassword";
@@ -34,13 +34,13 @@ const App = () => {
           <Route path="appetizers" element={<Appetizers />} />
           <Route path="drinks" element={<Drinks />} />
           <Route path="/ForgotPassword" element={<ForgotPassword/>} />
-          <Route element={<ProtectedRoutes/>}>
+          {/* <Route element={<ProtectedRoutes/>}> */}
           <Route path="account"element={<Account />}/>
           <Route path="contact" element={<Contact />} />
           <Route path="cart" element={<Cart />} />
           <Route path="dashboard" element={<Dashboard />} />
           </Route>
-        </Route>
+        {/* </Route> */}
         <Route path="users/:id/verify/:token" element={<Email/>}></Route>
         <Route path="/ResetPassword/:id/:token" element={<ResetPassword/>} />
         <Route path="/success" element={<Success />} />

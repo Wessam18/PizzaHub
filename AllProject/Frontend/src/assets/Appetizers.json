@@ -1,0 +1,59 @@
+[
+    {
+    "id": 1,
+    "img": "./Images/Pizza/BreadSticks.jpg",
+    "title": "Bread Sticks",
+    "details": "Delicious oven - baked sticks. Served with BBQ Sauce.",
+    "price": 45
+  },
+  {
+    "id": 2,
+    "img": "./Images/Pizza/CheeseSticks.jpg",
+    "title": "Cheese Sticks",
+    "details": "Fresh dough with a blend of Garlic Sauce and Mozzrella cheese, Served with BBQ Sauce.",
+    "price": 99
+  },
+  {
+    "id": 2,
+    "img": "./Images/Pizza/SpicyRolls.jpg",
+    "title": "Spicy Pepperoni Ranch Rolls",
+    "details": "8 Rolls stuffed with Pepperoni, Jalapeno, Mozzarella Cheese and Ranch Sauce.",
+    "price": 145
+  },
+  {
+    "id": 3,
+    "img": "./Images/Pizza/ChickenRolls.jpg",
+    "title": "Chicken Ranch Rolls",
+    "details": "8 Chicken Rolls stuffed with Mozzarella Cheese and Ranch Sauce.",
+    "price": 145
+  },
+  {
+    "id": 4,
+    "img": "./Images/Pizza/TandooriWings.jpg",
+    "title": "Tandoori Wings",
+    "details": "Savory wings baked to the bone served with barbeque sauce.",
+    "price": 109
+  },
+  {
+    "id": 5,
+    "img": "./Images/Pizza/GrilledWings.jpg",
+    "title": "Grilled Chicken Wings",
+    "details": "Savory wings baked to the bone served with barbeque sauce.",
+    "price": 115
+  },
+  {
+    "id": 6,
+    "img": "./Images/Pizza/ChickenPop.jpg",
+    "title": "Chicken Poppers",
+    "details": "9 pieces of Tender all-white chicken breasts, breaded and oven baked, Served with Ranch Sauce.",
+    "price": 160
+
+  },
+  {
+    "id": 7,
+    "img": "./Images/Pizza/TandooriPop.jpg",
+    "title": "Tandoori Poppers",
+    "details": "9 pieces of Tender all-white chicken breasts, breaded and oven baked, Served with Ranch Sauce.",
+    "price": 170
+  }
+]
