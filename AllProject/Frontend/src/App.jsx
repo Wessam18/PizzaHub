@@ -19,6 +19,8 @@ import ForgotPassword from "./Components/ForgotPassword";
 import ResetPassword from "./Components/ResetPassword";
 import Success from "./Components/Success";
 import SuccessOrder from "./Components/successOrder";
+import CommingSoon from "./Components/CommingSoon";
+import UpdateEmailvrefy from "./Components/UpdateEmailvrefy";
 
 const App = () => {
   return (
@@ -35,6 +37,7 @@ const App = () => {
           <Route path="appetizers" element={<Appetizers />} />
           <Route path="drinks" element={<Drinks />} />
           <Route path="/ForgotPassword" element={<ForgotPassword/>} />
+          <Route path="CommingSoon" element={<CommingSoon />} />
           <Route element={<ProtectedRoutes/>}>
           <Route path="account"element={<Account />}/>
           <Route path="contact" element={<Contact />} />
@@ -46,6 +49,7 @@ const App = () => {
         <Route path="/ResetPassword/:id/:token" element={<ResetPassword/>} />
         <Route path="/success" element={<Success />} />
         <Route path="/successOrder" element={<SuccessOrder/>} />
+        <Route path="users/:id/verifyUpdateEmail/:token" element={<UpdateEmailvrefy/>} />
       </Routes>
     </Router>
     </AuthProvider>

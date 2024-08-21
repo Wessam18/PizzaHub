@@ -166,13 +166,13 @@ const Signup = () => {
             <h2>Create Account</h2>
             {loading && <Spinner />}
             <div className="Social-icons">
-            <Link className="icon" id="SigninDiv">
+            <Link to="/CommingSoon" className="icon" id="SigninDiv">
             <FaGoogle className="google-icon" />
             </Link>
-              <Link to="/" className="icon">
+              <Link to="/CommingSoon" className="icon">
                 <FaFacebook />
               </Link>
-              <Link to="/" className="icon">
+              <Link to="/CommingSoon" className="icon">
                 <FaTwitter />
               </Link>
             </div>
@@ -224,13 +224,13 @@ const Signup = () => {
             <h2>Sign In</h2>
             {loading && <Spinner />}
             <div className="Social-icons">
-              <Link className="icon">
+              <Link to="/CommingSoon" className="icon">
                 <FaGoogle />
               </Link>
-              <Link to="/" className="icon">
+              <Link to="/CommingSoon" className="icon">
                 <FaFacebook />
               </Link>
-              <Link to="/" className="icon">
+              <Link to="/CommingSoon" className="icon">
                 <FaTwitter />
               </Link>
             </div>
