@@ -1,6 +1,6 @@
 import React from 'react';
 import ComingSoon from '../assets/Images/Covers/Comming-Soon.jpg';
-import './style/email.css';
+import './style/Soon.css';
 import { useNavigate } from 'react-router-dom';
 
 const CommingSoon = () => {
