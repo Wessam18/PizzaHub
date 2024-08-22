@@ -231,3 +231,47 @@ export const updateUser = async ({
     }
   }
 };
+
+export const resendVerificationEmail = async (email) => {
+  try {
+    // Find the user by email
+    const user = await userModel.findOne({ email });
+
+    if (!user) {
+      return { data: "User not found", statusCode: 400 };
+    }
+
+    // Check if user is already verified
+    if (user.verified) {
+      return { data: "User already verified", statusCode: 400 };
+    }
+
+    // Check if there's already a verification token for this user
+    let token = await Token.findOne({ userId: user._id });
+
+    if (!token) {
+      // Generate a new verification token if not already existing
+      const verificationToken = generateToken();
+      token = new Token({
+        userId: user._id,
+        token: verificationToken
+      });
+      await token.save();
+    }
+
+    // Send verification email
+    const verificationLink = `http://localhost:5173/users/${user._id}/verify/${token.token}`;
+    const emailOptions = {
+      to: email,
+      subject: 'Please verify your email address',
+      html: `<p>Click <a href="${verificationLink}">here</a> to verify your email address.</p>`,
+    };
+
+    await VreifyEmail(emailOptions);
+
+    return { data: "Verification email sent. Please check your inbox.", statusCode: 200 };
+  } catch (error) {
+    console.error('Error resending verification email:', error);
+    return { data: "Server error", statusCode: 500 };
+  }
+};
