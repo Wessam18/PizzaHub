@@ -122,4 +122,3 @@ Contributions are what make the open-source community such an amazing place to l
 - Make sure to update the license file
 - Make sure to update the copyright year
 - Make sure to update the contributors list
-
