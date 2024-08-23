@@ -41,6 +41,11 @@ PizzaHub is a fully functional restaurant website that allows users to browse th
 - **Express.js:** A minimal and flexible Node.js web application framework.
 - **MongoDB:** A NoSQL database for storing user data, orders, and menu items.
 - **Mongoose:** An Object Data Modeling (ODM) library for MongoDB and Node.js.
+- **Bcrypt:** For password hashing and verification.
+- **JSON Web Tokens (JWT):** For secure user authentication and authorization.
+- **Stripe:** For payment gateway integration.
+- **Multer:** For handling multipart/form-data requests.
+- **Express-Validator:** For validating user input and requests.
 
 ### Tools & Platforms
 
