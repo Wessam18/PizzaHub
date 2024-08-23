@@ -126,3 +126,9 @@ Contributions are what make the open-source community such an amazing place to l
 - Make sure to update the contributors list
 - Make sure to update the contributors list
 - Make sure to update the contributors list
+
+### Deployment
+
+To deploy the project, follow these steps:
+
+- Make sure to update the `config.py` file with your production database crede
