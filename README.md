@@ -34,8 +34,6 @@ PizzaHub is a fully functional restaurant website that allows users to browse th
 - **React Router:** For client-side routing and navigation.
 - **Redux:** For state management and global state sharing.
 - **Axios:** For making HTTP requests to the backend API.
-- **Material-UI:** For a consistent and visually appealing UI.
-- **React Hook Form:** For form validation and management.
 
 ### Backend
 
