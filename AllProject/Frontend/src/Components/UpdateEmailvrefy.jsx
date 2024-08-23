@@ -16,7 +16,6 @@ const UpdateEmailvrefy = () => {
                 const { data, status } = await axios.get(url);
                 
                 if (status === 200) {
-                    console.log('Email verification successful:', data.message);
                     setValidUrl(true);
                 } else {
                     console.error('Unexpected response:', status, data);

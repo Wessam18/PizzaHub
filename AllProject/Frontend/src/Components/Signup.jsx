@@ -170,9 +170,7 @@ const Signup = () => {
       };
   
       try {
-        const response = await axios.post('http://localhost:5000/users/signin', data);
-        console.log('Login response:', response);
-        
+        const response = await axios.post('http://localhost:5000/users/signin', data);        
         if (response.status === 200) {
           const token = response.data;
           

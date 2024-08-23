@@ -93,7 +93,6 @@ router.get("/:id/verify/:token", async (req, res) => {
         await user.save();
         setTimeout(async () => {
           await token.deleteOne();
-          console.log("Token deleted after 15 seconds");
       }, 15000);
         res.status(200).send({ message: "Email Verified Successfully" });
     } catch (error) {

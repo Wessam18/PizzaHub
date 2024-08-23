@@ -16,7 +16,6 @@ const confirmOrder = async (orderDetails: OrderDetails) => {
     const { userId, name, email, phoneNumber, address, items } = orderDetails;
 
     if (!items || items.length === 0) {
-        console.log('No items to process');
         return { message: 'No items to process' };
     }
 
