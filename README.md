@@ -88,10 +88,10 @@ cd PizzaHub
 
 For any questions or issues, please contact me us at:
 
-- **Email:**
+- **Email:** <wessamabdelnabi903@gmail.com>
 - **Github:** Wessam18
 
-- **Email:**
+- **Email:** <Hossamelsa7afy54@gmail.com>
 - **Github:** hossamelsahafy
 
 - **Email:** <omniaashraf249@gmail.com>
