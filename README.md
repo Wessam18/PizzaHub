@@ -56,3 +56,20 @@ To get a local copy of the project up and running, follow these steps:
 ```bash
 https://github.com/Wessam18/PizzaHub.git
 cd PizzaHub
+```
+
+### Contact
+
+For any questions or issues, please contact me us at:
+
+- **Email:**
+- **Github:** Wessam18
+
+- **Email:**
+- **Github:** 99omniaashraf
+
+- **Email:**
+- **Github:** hossamelsahafy
+
+- **Email:** <kmido9729@gmail.com>
+- **Github:** mohamehk-77
