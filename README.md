@@ -77,3 +77,26 @@ For any questions or issues, please contact me us at:
 ### License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+### Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create
+. Any contributions you make are **greatly appreciated**.
+
+- Fork the Project
+- Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+- Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+- Push to the Branch (`git push origin feature/AmazingFeature`)
+- Open a Pull Request
+- Follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version
+)
+- Make sure to update tests and documentation accordingly
+- Make sure to update the documentation and the README file
+- Make sure to update the CHANGELOG file
+- Make sure to update the license file
+- Make sure to update the copyright year
+- Make sure to update the contributors list
+- Make sure to update the contributors list
+- Make sure to update the contributors list
+- Make sure to update the contributors list
+- Make sure to update the contributors list
