@@ -59,6 +59,17 @@ PizzaHub is a fully functional restaurant website that allows users to browse th
 
 To get a local copy of the project up and running, follow these steps:
 
+1. Clone the repository using `git clone`
+2. Install the dependencies using `npm install`
+3. Create a `.env` file in the root directory and add your environment variables
+4. Start the development server using `npm start`
+5. Open your web browser and navigate to `http://localhost:`
+6. You can now interact with the application and test its features.
+7. To deploy the application, use `npm run build` to create a production build, then
+deploy it to your preferred hosting platform.
+8. Make sure to update the `config` file with your production environment variables.
+9. Test the application thoroughly before deploying it to production.
+
 ### Prerequisites
 
 - **Node.js:** Ensure you have Node.js installed on your machine. You can download it from [Node.js official website](https://nodejs.org/).
