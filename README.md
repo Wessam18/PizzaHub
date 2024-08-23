@@ -52,6 +52,8 @@ PizzaHub is a fully functional restaurant website that allows users to browse th
 - **Vite:** A frontend build tool that provides fast development and optimized builds.
 - **npm:** Node package manager for managing dependencies.
 - **dotenv:** For managing environment variables.
+- **Heroku:** A cloud platform for deploying and hosting the application.
+- **MongoDB Atlas:** A cloud-based MongoDB service for hosting the database.
 
 ## Installation
 
