@@ -20,6 +20,8 @@ PizzaHub is a fully functional restaurant website that allows users to browse th
 - **Dynamic Menu:** The menu is dynamically rendered from the backend, allowing easy updates and management.
 - **Order Management:** Users can add items to their cart, place orders, and track them.
 - **Contact Form:** A contact form allows users to send messages directly to the restaurant.
+- **Admin Panel:** The admin panel provides a comprehensive dashboard for managing orders, users, and menu
+- **Payment Gateway Integration:** The website integrates with a payment gateway for secure transactions.
 
 ## Technologies Used
 
