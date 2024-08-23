@@ -73,3 +73,7 @@ For any questions or issues, please contact me us at:
 
 - **Email:** <kmido9729@gmail.com>
 - **Github:** mohamehk-77
+
+### License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
