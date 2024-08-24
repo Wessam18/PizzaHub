@@ -9,33 +9,16 @@ interface OrderDetails {
     email: string;
     phoneNumber: string;
     address: string;
+    items: any
 }
 
 const confirmOrder = async (orderDetails: OrderDetails) => {
-    const { userId, name, email, phoneNumber, address } = orderDetails;
-    
-    // Retrieve the active cart for the user
-    const cart = await CartModel.findOne({ userId, status: 'active' });
-    
-    // Check if the cart exists
-    if (!cart) {
-        console.error('Cart not found');
-        return { message: 'Cart not found' }; // Response for cart not found
+    const { userId, name, email, phoneNumber, address, items } = orderDetails;
+
+    if (!items || items.length === 0) {
+        return { message: 'No items to process' };
     }
 
-    // Check if the cart is empty
-    if (cart.items.length === 0) {
-        console.log('Cart is empty, unable to process order');
-        return { message: 'Cart is empty, unable to process order' }; // Response for empty cart
-    }
-
-    // Check if the order has already been confirmed
-    if (cart.status === 'completed') {
-        console.log('The order has already been confirmed. Please check your email.');
-        return { message: 'The order has already been confirmed. Please check your email.' }; // Response for already confirmed order
-    }
-
-    // Prepare the email HTML
     const emailHtml = `
         <h1>Order Confirmation</h1>
         <p>Thank you for your order, ${name}!</p>
@@ -47,52 +30,47 @@ const confirmOrder = async (orderDetails: OrderDetails) => {
         </ul>
         <h2>Order Details:</h2>
         <ul>
-            ${cart.items.map(item => `
+            ${items.map(item => `
                 <li>
                     ${item.size ? 'Pizza: ' : item.drink ? 'Drink: ' : item.appetizers ? 'Appetizer: ' : ''}${item.title} 
                     ${item.size ? `(Size: ${item.size})` : ''}
                     - Quantity: ${item.quantity}
-                    - Price: ${item.price}
+                    - Price: ${item.totalPrice}
                 </li>
             `).join('')}
         </ul>
-        <p>Total: ${cart.total}</p>
+        <p>Total: ${items.reduce((total, item) => total + item.totalPrice, 0)}</p>
     `;
-    
+
     try {
-        // Send the confirmation email
         await sendEmail({
             to: `${email}, PizzaHubStuff@outlook.com`,
             subject: 'Order Confirmation',
             html: emailHtml,
         });
+
         const newOrder = new OrderModel({
             userId: userId,
             name: name,
             email: email,
             phone: phoneNumber,
             address: address,
-            items: cart.items.map(item => ({
-                pizza: item.pizza,
-                appetizers: item.appetizers,
-                drink: item.drink,
+            items: items.map(item => ({
+                itemId: item.itemId,
                 title: item.title,
                 quantity: item.quantity,
-                price: item.price,
+                price: item.totalPrice / item.quantity,
                 size: item.size
             })),
-            total: cart.total,
+            total: items.reduce((total, item) => total + item.totalPrice, 0),
             status: 'completed'
         });
-        
+
         await newOrder.save();
-        // Mark the cart as completed
-        cart.status = 'completed'; // Mark as completed
-        await cart.save(); // Save the updated cart
-        
-        // Clear the cart
-        await clearUserCart(userId); 
-        
+
+        // Optionally clear the cart if needed
+        await clearUserCart(userId);
+
         return { message: 'Order confirmed and email sent' }; // Success message
     } catch (error) {
         console.error('Error processing order:', error);

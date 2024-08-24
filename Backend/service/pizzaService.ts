@@ -17,6 +17,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy84Loxp9I5SltGOfUU89qCStK6hyXSiolQgLF6Xl1yEAcngyiBOnIkguDiPaPDsJwTDs&usqp=CAU",
@@ -28,6 +29,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://topsecretrecipes.com/images/product/dominos-cheeseburger-pizza-copycat-recipe.jpg",
@@ -39,9 +41,10 @@ export const seedInitialPizzas = async () => {
           ssize: "Small",
           msize: "Medium",
           lsize: "Large",
+          itemType: "Pizza"
       },
       {
-        image: "https://img.freepik.com/premium-photo/delicious-chicken-pizza-with-white-sauce-fresh-parsley_1001175-38404.jpg?w=996",
+        image: "https://bakingamoment.com/wp-content/uploads/2024/04/IMG_3069-chicken-bacon-ranch-pizza.jpg",
         title: "Smoky Ranch",
         details: "Smoky flavors paired with a creamy ranch base for a unique taste.",
         sprice: 95,
@@ -50,6 +53,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Garden-Special.jpg",
@@ -61,6 +65,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://img.freepik.com/premium-photo/pizza-with-mushrooms-mushrooms-it-sits-table_985633-20430.jpg?w=740",
@@ -72,6 +77,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://images.zyda.co/cdn-cgi/image/width=1080,quality=75,f=auto,metadata=none/photos/menu_items/photo_urls/e6fedec2-0bf3-4a92-af7b-b41718ea924b/original/%D8%B1%D8%A7%D9%86%D8%B4_%D8%AA%D8%B4%D9%83%D9%86_%D8%A8%D9%8A%D9%83%D9%88%D9%86.jpg?1707316270",
@@ -83,6 +89,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://img.freepik.com/premium-photo/pizza-with-shrimps-kalamata-olives-pesto-mozzarella-cheese-basil-cherry-tomatoes-chili_162695-56089.jpg?ga=GA1.1.1105971845.1724013645&semt=ais_hybrid",
@@ -94,6 +101,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Mexican-Ole.jpg",
@@ -105,6 +113,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://img.freepik.com/premium-photo/pepperoni-pizza-with-mozzarella-cheese-tomatoes-basil-black-background_1308157-112913.jpg?w=740",
@@ -116,6 +125,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Chicken-BBQ.jpg",
@@ -127,6 +137,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
         },
       {
         image: "https://www.papajohnsegypt.com/images/Products/Buffalo-Poppers-Pizza.jpg",
@@ -138,6 +149,7 @@ export const seedInitialPizzas = async () => {
         ssize: "Small",
         msize: "Medium",
         lsize: "Large",
+        itemType: "Pizza"
       },
         ];
 

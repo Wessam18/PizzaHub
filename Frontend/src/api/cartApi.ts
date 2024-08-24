@@ -1,5 +1,7 @@
-// cartApi.ts
-// cartApi.ts
+import { useAuth } from "../Components/Context/AuthContext";
+
+const API_BASE_URL = 'http://localhost:5000';
+
 interface ICartItem {
     id: string;
     title: string;
@@ -21,26 +23,14 @@ interface CartItemParams {
     itemType: 'Pizza' | 'Drinks' | 'Appetizers';
 }
 
-const API_BASE_URL = '/';
-
-// (Rest of the code for fetchCart, addItemToCart, and clearCart functions)
-
-interface CartItemParams {
-    itemId: string;
-    quantity: number;
-    size?: 'Small' | 'Medium' | 'Large';
-    itemType: 'Pizza' | 'Drinks' | 'Appetizers';
-}
-
-
 // Function to fetch the active cart
-export const fetchCart = async (): Promise<ICart | null> => {
+export const fetchCart = async (token: string): Promise<ICart | null> => {
     try {
-        const response = await fetch(`${API_BASE_URL}/`, {
+        const response = await fetch(`${API_BASE_URL}/cart`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` // Assuming token is stored in localStorage
+                'Authorization': `Bearer ${token}`,
             },
         });
 
@@ -56,15 +46,13 @@ export const fetchCart = async (): Promise<ICart | null> => {
     }
 };
 
-// Function to add an item to the cart
-
-export const addItemToCart = async (itemParams: CartItemParams): Promise<ICart | null> => {
+export const addItemToCart = async (token: string, itemParams: CartItemParams): Promise<ICart | null> => {
     try {
         const response = await fetch(`${API_BASE_URL}/items`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`, // Assuming token is stored in localStorage
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(itemParams),
         });
@@ -81,14 +69,14 @@ export const addItemToCart = async (itemParams: CartItemParams): Promise<ICart |
         return null;
     }
 };
-// Function to clear the user's cart
-export const clearCart = async (): Promise<boolean> => {
+
+export const clearCart = async (token: string): Promise<boolean> => {
     try {
         const response = await fetch(`${API_BASE_URL}/clear`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`, // Assuming token is stored in localStorage
+                'Authorization': `Bearer ${token}`,
             },
         });
 

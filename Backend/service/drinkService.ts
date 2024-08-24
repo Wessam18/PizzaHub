@@ -12,21 +12,25 @@ export const seedInitialDrinks = async () => {
             image: "https://www.papajohnsegypt.com/images/Products/Pepsi.jpg",
             title: "Pepsi",
             price: 20,
+            itemType: "Drinks"
           },
           {
             image: "https://www.papajohnsegypt.com/images/Products/Mirinda.jpg",
             title: "Mirinda",
             price: 20,
+            itemType: "Drinks"
           },
           {
             image: "https://www.papajohnsegypt.com/images/Products/7up.jpg",
             title: "7UP",
             price: 20,
+            itemType: "Drinks"
           },
           {
             image: "https://www.nestlepurelife.com/pk/sites/g/files/xknfdk411/files/1500ml_0_1.jpg",
             title: "Mineral Water",
             price: 20,
+            itemType: "Drinks"
           },
         ];
 

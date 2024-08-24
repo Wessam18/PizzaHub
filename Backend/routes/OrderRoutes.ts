@@ -7,9 +7,9 @@ const router = express.Router();
 
 router.post('/order', validateJWT, async (req: ExtendRequest, res) => {
     const userId = req.user?._id;
-    const { name, email, phone, address } = req.body;
+    const { name, email, phone, address, items } = req.body;
 
-    if (!name || !email || !phone || !address) {
+    if (!name || !email || !phone || !address || !items) {
         return res.status(400).send({ error: 'Missing required fields' });
     }
 
@@ -20,6 +20,7 @@ router.post('/order', validateJWT, async (req: ExtendRequest, res) => {
             email,
             phoneNumber: phone,
             address,
+            items
         });
         res.status(200).send({ message: 'Order confirmed and email sent' });
     } catch (error) {

@@ -20,6 +20,10 @@ const Signup = () => {
   const [messageType, setMessageType] = useState('');
   const {Login} = useAuth();
   const {isAuth} = useAuth();
+  const [resendTimer, setResendTimer] = useState(0);
+  const [isResendDisabled, setIsResendDisabled] = useState(false);
+  const [showResendButton, setShowResendButton] = useState(false);
+  const [resendVisible, setResendVisible] = useState(false);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -41,7 +45,34 @@ const Signup = () => {
       registerBtn.removeEventListener('click', handleRegisterClick);
       loginBtn.removeEventListener('click', handleLoginClick);
     };
-  }, []);
+  }, []),
+  useEffect(() => {
+    let timer;
+    if (resendTimer > 0) {
+      timer = setInterval(() => {
+        setResendTimer(prev => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            setIsResendDisabled(false);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [resendTimer]);
+
+  const resendVerificationEmail = async (email) => {
+    try {
+      const response = await axios.post('http://localhost:5000/users/resend-verification-email', { email });
+      return response.data;
+    } catch (error) {
+      console.error('Error resending verification email:', error);
+      return { data: "Server error", statusCode: 500 };
+    }
+  };
+
 
   const handleSignUpSubmit = async (event) => {
     event.preventDefault();
@@ -63,6 +94,8 @@ const Signup = () => {
           setMessageType('success');
           setMessage('Account created successfully! Please check your email to verify your account.');
           setLoading(false);
+          setShowResendButton(true);
+          setResendVisible(true);
           loginBtnRef.current.click();
           const token = await response.data;
           if(!token) {
@@ -107,6 +140,25 @@ const Signup = () => {
       }
     }
   }
+  const handleResendClick = async () => {
+    setResendTimer(30);
+    setIsResendDisabled(true);
+
+    const result = await resendVerificationEmail(email);
+
+    if (result.statusCode !== 200) {
+      setMessage(result.data);
+      setMessageType('error');
+    } else {
+      setMessage(result.data);
+      setMessageType('success');
+    }
+
+    setTimeout(() => {
+      setMessage('');
+      setMessageType('');
+    }, 5000);
+  };
 
   const handleSignInSubmit = async (event) => {
     event.preventDefault();
@@ -118,9 +170,7 @@ const Signup = () => {
       };
   
       try {
-        const response = await axios.post('http://localhost:5000/users/signin', data);
-        console.log('Login response:', response);
-        
+        const response = await axios.post('http://localhost:5000/users/signin', data);        
         if (response.status === 200) {
           const token = response.data;
           
@@ -131,19 +181,25 @@ const Signup = () => {
             navigate('/menu');
             Login(email, token);
           } else {
+            setShowResendButton(true);
             setMessageType('error');
             setMessage("Token not received. Please try again.");
         }
        } else if (response.status === 403) {
         setMessageType('error');
         setMessage("Please verify your email before logging in.");
+        
         } else {
           console.error('Unexpected response status:', response.status);
           setMessageType('error');
           setMessage('Login failed. Please check your credentials.');
+          setShowResendButton(true);
+          setResendVisible(true);
         }
       } catch (error) {
         setMessageType('error');
+        setShowResendButton(true);
+        setResendVisible(true);
         console.error('Error during login:', error);
         setMessage('Login failed. Please check your credentials.');
       } finally {
@@ -166,13 +222,13 @@ const Signup = () => {
             <h2>Create Account</h2>
             {loading && <Spinner />}
             <div className="Social-icons">
-            <Link className="icon" id="SigninDiv">
+            <Link to="/CommingSoon" className="icon" id="SigninDiv">
             <FaGoogle className="google-icon" />
             </Link>
-              <Link to="/" className="icon">
+              <Link to="/CommingSoon" className="icon">
                 <FaFacebook />
               </Link>
-              <Link to="/" className="icon">
+              <Link to="/CommingSoon" className="icon">
                 <FaTwitter />
               </Link>
             </div>
@@ -224,13 +280,13 @@ const Signup = () => {
             <h2>Sign In</h2>
             {loading && <Spinner />}
             <div className="Social-icons">
-              <Link className="icon">
+              <Link to="/CommingSoon" className="icon">
                 <FaGoogle />
               </Link>
-              <Link to="/" className="icon">
+              <Link to="/CommingSoon" className="icon">
                 <FaFacebook />
               </Link>
-              <Link to="/" className="icon">
+              <Link to="/CommingSoon" className="icon">
                 <FaTwitter />
               </Link>
             </div>
@@ -248,13 +304,23 @@ const Signup = () => {
               required 
             />
             <input 
-              type="password" 
+              type="password"
               placeholder="Password"
               value={password} 
               onChange={(e) => setPassword(e.target.value)}
               required 
             />
             <Link to="/ForgotPassword">Forget Your Password?</Link>
+            {showResendButton && (
+        <button
+          type="button"
+          onClick={handleResendClick}
+          className="Resend"
+          disabled={isResendDisabled}
+        >
+          {isResendDisabled ? `Resend in ${resendTimer}s` : 'Resend'}
+        </button>
+      )}
             <button type="submit" disabled={loading}>Sign In</button>
           </form>
         </div>

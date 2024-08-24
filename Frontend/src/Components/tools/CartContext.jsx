@@ -1,6 +1,5 @@
 import { createContext, useState } from 'react';
 
-
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
@@ -8,11 +7,11 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (item) => {
     setCartItems((prevItems) => {
-      // Check if the item type is 'Drink' or 'Appetizer' and exclude size if so
+      // Remove size for non-pizza items
       const isDrinkOrAppetizer = item.itemType === 'Drink' || item.itemType === 'Appetizer';
       const itemToAdd = isDrinkOrAppetizer
-        ? { ...item, title: item.title || 'Default Title', size: undefined } // Remove size
-        : { ...item, title: item.title || 'Default Title' }; // Keep size
+        ? { ...item, size: undefined } // Remove size for drinks and appetizers
+        : { ...item };
 
       const existingItemIndex = prevItems.findIndex(
         (prevItem) =>
