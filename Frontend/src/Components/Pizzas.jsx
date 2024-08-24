@@ -8,7 +8,7 @@ const Pizzas = () => {
     useEffect(() => {
         const loadPizzas = async () => {
             const data = await fetchPizza();
-            setPizzas(data); // Assuming data is an array of pizza objects
+            setPizzas(data);
         };
 
         loadPizzas();
@@ -18,8 +18,8 @@ const Pizzas = () => {
         <div className="flex lg:mx-40 m-[20px] flex-col items-center justify-center py-20" id="pizzas">
             <h2 className="text-4xl title mb-20">Pizzas</h2>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
-                {pizzas.map(data => (
-                    <SingleService key={data.id} data={data} />
+            {pizzas.map((data, index) => (
+                <SingleService key={index} data={data} />
                 ))}
             </div>
         </div>

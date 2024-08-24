@@ -30,10 +30,8 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(`http://localhost:5000/users/ResetPassword/${id}/${token}`, data);
-      console.log('Response:', response);
 
       if (response.status === 200) {
-        console.log('Password reset successful:', response.data);
         setMessageType('success');
         setMessage('Password reset link has been sent to your email!');
         navigate('/success');

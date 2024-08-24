@@ -3,7 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CartContext } from './tools/CartContext';
 
 const SingleService = ({ data }) => {
-    const { title, image, details, _id: id, sprice, mprice, lprice, ssize, msize, lsize, price } = data;
+    const { title, image, details, _id: id, sprice, mprice, lprice, ssize, msize, lsize, price, itemType = 'Pizza' } = data;
 
     const { addToCart } = useContext(CartContext);
 
@@ -36,13 +36,13 @@ const SingleService = ({ data }) => {
     };
 
     const handleAddToCart = () => {
-        addToCart({ id, title, size, quantity, price: currentPrice * quantity });
+        addToCart({ id, title, size, quantity, price: currentPrice * quantity, itemType });
     };
 
     return (
         <div className="hover:shadow-lg transition-all duration-700 lg:p-5 p-[20px] w-[100%] rounded-3xl">
             <div className="overflow-hidden rounded-3xl">
-                <img className="hover:scale-125 hover:opacity-75 transition-all duration-700" src={image} alt={title}  style={{ width: '345px', height: '240px', objectFit: 'cover' }}/>
+                <img className="hover:scale-125 hover:opacity-75 transition-all duration-700" src={image} alt={title} style={{ width: '345px', height: '240px', objectFit: 'cover' }} />
             </div>
             <h2 className="text-xl font-semibold my-4">{title}</h2>
             <p>{details}</p>
@@ -52,13 +52,13 @@ const SingleService = ({ data }) => {
                         <option key={i + 1} value={i + 1}>{i + 1}</option>
                     ))}
                 </select>
-                {ssize || msize || lsize ? (
+                {(ssize || msize || lsize) && (
                     <select className="m-2 h-100 select-success rounded" value={size} onChange={handleSizeChange}>
                         {ssize && <option value={ssize}>{ssize}</option>}
                         {msize && <option value={msize}>{msize}</option>}
                         {lsize && <option value={lsize}>{lsize}</option>}
                     </select>
-                ) : null}
+                )}
                 <div className="d-inline h-100 fs-6">Total Price: ${(currentPrice * quantity).toFixed(2)}</div>
             </div>
             <div className="flex justify-center mt-10">
@@ -72,5 +72,5 @@ const SingleService = ({ data }) => {
         </div>
     );
 };
-// fdddd
+
 export default SingleService;

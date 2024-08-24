@@ -10,7 +10,7 @@ export interface IPizzas extends Document {
     ssize: string;
     msize: string;
     lsize: string;
-    //role: string;
+    itemType?: string;
 }
 
 const pizzasSchema = new Schema<IPizzas>({
@@ -23,8 +23,7 @@ const pizzasSchema = new Schema<IPizzas>({
     ssize: { type: String, required: true},
     msize: { type: String, required: true},
     lsize: { type: String, required: true},
-   // role: { type: String, required: true, defualt: "pizza"}
-
+    itemType: { type: String, defualt: "pizza"}
 })
 
 const pizzasModel = mongoose.model<IPizzas>('pizzas', pizzasSchema)

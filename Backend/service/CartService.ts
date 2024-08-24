@@ -102,7 +102,6 @@ const clearUserCart = async (userId: string) => {
             { userId },
             { $set: { status: 'cleared', items: [], total: 0 } }
         );
-        console.log('Cart cleared successfully');
     } catch (error) {
         console.error('Error clearing cart:', error);
         throw new Error('Failed to clear cart');

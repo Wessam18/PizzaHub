@@ -28,7 +28,6 @@ const VreifyEmail = async ({ to, subject, html }: EmailOptions) => {
 
     try {
         await transporter.sendMail(mailOptions);
-        console.log('Email sent successfully');
     } catch (error) {
         console.error('Error sending email:', error);
     }

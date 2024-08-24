@@ -11,6 +11,7 @@ import nodemailer from 'nodemailer';
 import bcrypt from 'bcrypt'
 import VreifyEmail from '../src/MiddleWares/SendVrifyMail';
 const router = express.Router()
+import { resendVerificationEmail } from '../service/userService';
 
 router.post('/signup', async (req, res) =>  {
     const {name,  email, phoneNumber, password} = req.body
@@ -92,7 +93,6 @@ router.get("/:id/verify/:token", async (req, res) => {
         await user.save();
         setTimeout(async () => {
           await token.deleteOne();
-          console.log("Token deleted after 15 seconds");
       }, 15000);
         res.status(200).send({ message: "Email Verified Successfully" });
     } catch (error) {
@@ -140,7 +140,7 @@ router.post('/ResetPassword/:id/:token', async (req: Request, res: Response) => 
   }
 
   try {
-    const decoded = jwt.verify(token, "F6F5BB625C8298836B7574DF71DFD");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const result = await userModel.findByIdAndUpdate(id, { password: hashedPassword }, { new: true });
@@ -158,6 +158,13 @@ router.post('/ResetPassword/:id/:token', async (req: Request, res: Response) => 
     console.error('Error during password reset:', error);
     res.status(500).json({ status: "Error during password reset" });
   }
+});
+
+router.post('/resend-verification-email', async (req, res) => {
+  const { email } = req.body;
+
+  const result = await resendVerificationEmail(email);
+  res.status(result.statusCode).json(result);
 });
 
 export default  router
