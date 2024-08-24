@@ -1,23 +1,27 @@
 [
   {
-    "id": 21,
-    "img": "./Images/Pizza/Pepsi.jpg",
+    "image": "https://www.papajohnsegypt.com/images/Products/Pepsi.jpg",
     "title": "Pepsi",
-    "details": " ",
-    "price": 20
+    "price": 20,
+    "itemType": "Drinks"
   },
   {
-    "id": 22,
-    "img": "./Images/Pizza/Mirinda.jpg",
+    "image": "https://www.papajohnsegypt.com/images/Products/Mirinda.jpg",
     "title": "Mirinda",
-    "details": "",
-    "price": 20
+    "price": 20,
+    "itemType": "Drinks"
   },
   {
-    "id": 23,
-    "img": "./Images/Pizza/Water.jpeg",
+    "image": "https://www.papajohnsegypt.com/images/Products/7up.jpg",
+    "title": "7UP",
+    "price": 20,
+    "itemType": "Drinks"
+  },
+  {
+    "image": "https://www.nestlepurelife.com/pk/sites/g/files/xknfdk411/files/1500ml_0_1.jpg",
     "title": "Mineral Water",
-    "details": " ",
-    "price": 20
+    "price": 20,
+    "itemType": "Drinks"
   }
 ]
+

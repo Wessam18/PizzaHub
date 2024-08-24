@@ -1,6 +1,5 @@
 import appitizersModel from '../models/appitizerModel'
 
-
 export const getAllAppitizers = async() => {
     return await appitizersModel.find()
 }
