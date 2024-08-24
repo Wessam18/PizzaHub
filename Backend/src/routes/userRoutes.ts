@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { register,   signin } from '../service/userService';
 import { updateUser } from '../service/userService'
-import validateJWT from '../src/MiddleWares/validateJWT';
+import validateJWT from '../MiddleWares/validateJWT';
 import userModel from '../models/userModel';
 import jwt from 'jsonwebtoken';
 const  Token = require('../models/token')
@@ -9,7 +9,7 @@ const dotenv = require('dotenv')
 dotenv.config();
 import nodemailer from 'nodemailer';
 import bcrypt from 'bcrypt'
-import VreifyEmail from '../src/MiddleWares/SendVrifyMail';
+import VreifyEmail from '../MiddleWares/SendVrifyMail';
 const router = express.Router()
 import { resendVerificationEmail } from '../service/userService';
 

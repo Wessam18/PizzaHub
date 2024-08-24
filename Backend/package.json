@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "dev": "set NODE_NO_WARNINGS=1 && nodemon --watch src --exec ts-node ./src/index.ts"
+    "dev": "set NODE_NO_WARNINGS=1 && nodemon --watch src --exec ts-node ./src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+
   },
   "keywords": [],
   "author": "",

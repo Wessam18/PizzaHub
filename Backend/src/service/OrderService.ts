@@ -1,5 +1,5 @@
 import { getActiveCart, clearUserCart } from './CartService';
-import { sendEmail } from '../src/MiddleWares/SendEmail';
+import { sendEmail } from '../MiddleWares/SendEmail';
 import { CartModel } from '../models/cartModel';
 import OrderModel from '../models/orderModel';
 

@@ -1,4 +1,4 @@
-import { sendEmail } from '../src/MiddleWares/SendEmail';
+import { sendEmail } from '../MiddleWares/SendEmail';
 import dotenv from 'dotenv';
 dotenv.config();
 

@@ -1,18 +1,18 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import usersRoutes from '../routes/userRoutes'
-import drinksRoutes from '../routes/drinksRoutes'
-import pizzasRoute from '../routes/pizzaRoute'
-import appitizersRoute from '../routes/appitizerRoute'
+import usersRoutes from './routes/userRoutes'
+import drinksRoutes from './routes/drinksRoutes'
+import pizzasRoute from './routes/pizzaRoute'
+import appitizersRoute from './routes/appitizerRoute'
 
-import cartRoutes from '../routes/CartRoutes'
+import cartRoutes from './routes/CartRoutes'
 import cors from 'cors';
-import orderRoutes from '../routes/OrderRoutes'
-import contactRoute from '../routes/contactRoute'
+import orderRoutes from './routes/OrderRoutes'
+import contactRoute from './routes/contactRoute'
 import dotenv from 'dotenv'
-import { seedInitialAppitizers } from '../service/appitizerService'
-import { seedInitialDrinks } from '../service/drinkService'
-import { seedInitialPizzas } from '../service/pizzaService'
+import { seedInitialAppitizers } from './service/appitizerService'
+import { seedInitialDrinks } from './service/drinkService'
+import { seedInitialPizzas } from './service/pizzaService'
 dotenv.config()
 
 const app = express()

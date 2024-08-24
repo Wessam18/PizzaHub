@@ -2,7 +2,7 @@ import userModel from "../models/userModel";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import crypto from 'crypto';
-import VreifyEmail from "../src/MiddleWares/SendVrifyMail";
+import VreifyEmail from "../MiddleWares/SendVrifyMail";
 const  Token = require('../models/token');
 
 const generateToken = () => crypto.randomBytes(20).toString('hex');

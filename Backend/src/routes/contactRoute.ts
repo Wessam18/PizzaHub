@@ -1,6 +1,6 @@
 import express from 'express';
 import handleContactForm from '../service/contactService'; // Adjust path if needed
-import { ExtendRequest } from '../src/types/ExtendReq';
+import { ExtendRequest } from '../types/ExtendReq';
 
 const router = express.Router();
 

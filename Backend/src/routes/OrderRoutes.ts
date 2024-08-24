@@ -1,7 +1,7 @@
 import express from 'express';
-import validateJWT from '../src/MiddleWares/validateJWT';
+import validateJWT from '../MiddleWares/validateJWT';
 import confirmOrder from '../service/OrderService';
-import { ExtendRequest } from '../src/types/ExtendReq';
+import { ExtendRequest } from '../types/ExtendReq';
 
 const router = express.Router();
 
