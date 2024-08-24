@@ -1,0 +1,262 @@
+.signup-page * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.signup-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.signup-page .Container {
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.signup-page .Container p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  margin: 20px 0;
+}
+
+.signup-page .Container span {
+  font-size: 12px;
+}
+
+.signup-page .Container a {
+  color: #333;
+  font-size: 13px;
+  text-decoration: none;
+  margin: 15px 0 10px;
+}
+
+.signup-page .Container button {
+  background-color: rgb(240, 163, 19);
+  color: #fff;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.signup-page .Container button.hidden {
+  background-color: transparent;
+  border-color: #fff;
+}
+
+.signup-page .Container form {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
+}
+
+.signup-page .Container input {
+  background-color: #eee;
+  border: none;
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+}
+
+.signup-page .Form-Container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.signup-page .Signin {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.signup-page .Container.active .Signin {
+  transform: translateX(100%);
+}
+
+.signup-page .SignUp {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.signup-page .Container.active .SignUp {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+
+@keyframes move {
+  0%, 49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%, 100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.signup-page .Social-icons {
+  margin: 20px 0;
+}
+
+.signup-page .Social-icons a {
+  border: 1px solid #ccc;
+  border-radius: 20%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+  width: 40px;
+  height: 40px;
+}
+
+.signup-page .Toggle-Container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  border-radius: 150px 0 0 100px;
+}
+
+.signup-page .Container.active .Toggle-Container {
+  transform: translateX(-100%);
+}
+
+.signup-page .Toggle {
+  background-color: rgb(236, 191, 191);
+  height: 100%;
+  background: linear-gradient(to right, rgb(236, 191, 191), rgb(240, 176, 58));
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.signup-page .Container.active .Toggle {
+  transform: translateX(50%);
+}
+
+.signup-page .Toggle-Panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 30px;
+  text-align: center;
+  top: 0;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.signup-page .Toggle-Left {
+  transform: translateX(-200%);
+}
+
+.signup-page .Toggle-Right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.signup-page .Container.active .Toggle-Left {
+  transform: translateX(0);
+}
+
+.signup-page .Container.active .Toggle-Right {
+  transform: translateX(200%);
+}
+
+/* Media Queries for Larger Screens */
+@media (min-width: 1024px) {
+  .signup-page .Container {
+    width: 960px;
+    min-height: 600px;
+  }
+
+  .signup-page .Container p,
+  .signup-page .Container span,
+  .signup-page .Container a,
+  .signup-page .Container button,
+  .signup-page .Container input {
+    font-size: 16px;
+  }
+
+  .signup-page .Container button {
+    padding: 15px 60px;
+  }
+
+  .signup-page .Social-icons a {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.message {
+  font-size: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.message.success {
+  color: #4CAF50; /* Success color */
+}
+
+.message.error {
+  color: #F44336; /* Error color */
+}
+
+.signup-page .Resend {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-page .Resend:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}

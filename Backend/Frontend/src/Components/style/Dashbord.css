@@ -1,0 +1,11 @@
+/* Custom CSS for the trash icon */
+.table-row {
+    position: relative;
+  }
+  
+  .table-row .fa-trash {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }

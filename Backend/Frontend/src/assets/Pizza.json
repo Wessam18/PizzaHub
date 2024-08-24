@@ -1,0 +1,153 @@
+[
+    {
+      "id": 1,
+      "img": "./Images/Pizza/Margherita.webp",
+      "title": "Margherita",
+      "details": "A traditional Margherita pizza with fresh mozzarella, basil, and tomatoes.",
+      "sprice": 80,
+      "mprice": 150,
+      "lprice": 180,
+      "ssize": "Small",
+      "msize": "Medium",
+      "lsize": "Large"
+    },
+    {
+      "id": 2,
+      "img": "./Images/Pizza/sixCheese.jpg",
+      "title": "Six Cheese",
+      "details": "A pizza loaded with six different cheeses for the ultimate cheesy experience.",
+      "sprice": 85,
+      "mprice": 130,
+      "lprice": 190,
+      "ssize": "Small",
+      "msize": "Medium",
+      "lsize": "Large"
+    },
+    {
+      "id": 3,
+      "img": "./Images//Pizza/CheeseBurger.webp",
+      "title": "Cheese Burger",
+      "details":
+        "All the flavors of a cheeseburger on a pizza, with plenty of cheese.",
+        "sprice": 90,
+        "mprice": 140,
+        "lprice": 200,
+        "ssize": "Small",
+        "msize": "Medium",
+        "lsize": "Large"
+    },
+    {
+      "id": 4,
+      "img": "./Images/Pizza/SmokyRanch.jpg",
+      "title": "Smoky Ranch",
+      "details":
+        "Smoky flavors paired with a creamy ranch base for a unique taste.",
+      "sprice": 95,
+      "mprice": 150,
+      "lprice": 210,
+      "ssize": "Small",
+      "msize": "Medium",
+      "lsize": "Large"
+    },
+    {
+      "id": 5,
+      "img": "./Images/Pizza/LittleItaly.jpg",
+      "title": "Little Italy",
+      "details":
+        "A pizza inspired by the flavors of Italy, with fresh tomatoes and basil.",
+      "sprice": 100,
+      "mprice": 160,
+      "lprice": 220,
+      "ssize": "Small",
+      "msize": "Medium",
+      "lsize": "Large"
+    },
+    {
+      "id": 6,
+      "img": "/Images/Pizza/SpicyPepperoni.jpg",
+      "title": "Spicy Pepperoni",
+      "details": "Pepperoni with a spicy twist, topped with a zesty ranch sauce.",
+      "sprice": 105,
+      "mprice": 170,
+      "lprice": 230,
+      "ssize": "Small",
+      "msize": "Medium",
+      "lsize": "Large"
+    },
+    {
+      "id": 7,
+      "img": "./Images/Pizza/ChickenRanch.jpg",
+      "title": "Chicken Ranch",
+      "details":
+        "Tender chicken topped with a creamy ranch sauce and fresh vegetables.",
+      "sprice": 110,
+      "mprice": 180,
+      "lprice": 240,
+      "ssize": "Small",
+      "msize": "Medium",
+      "lsize": "Large"
+    },
+    {
+      "id": 8,
+      "img": "./Images/Pizza/Shrimps.jpg",
+      "title": "Shrimps",
+      "details":
+        "Shrimps, Tomato, Onions, Green Pepper.",
+      "sprice": 115,
+      "mprice": 190,
+      "lprice": 260,
+      "ssize": "Small",
+      "msize": "Medium",
+      "lsize": "Large"
+    },
+    {
+      "id": 9,
+      "img": "./Images/Pizza/CheeseTooppings.jpg",
+      "title": "Cheese Tooppings",
+      "details":
+        "A delightful combination of three cheeses with two of your favorite toppings",
+      "sprice": 120,
+      "mprice": 200,
+      "lprice": 260,
+      "ssize": "Small",
+      "msize": "Medium",
+      "lsize": "Large"
+    },
+    {
+      "id": 10,
+      "img": "./Images/Pizza/SpicyPepperoniRanch.jpg",
+      "title": "Spicy Pepperoni Ranch",
+      "details": "Pepperoni pizza with a kick, combined with creamy ranch sauce.",
+      "sprice": 125,
+      "mprice": 210,
+      "lprice": 270,
+      "ssize": "Small",
+      "msize": "Medium",
+      "lsize": "Large"
+    },
+    {
+      "id": 11,
+      "img": "./Images/Pizza/ChickenBBQ.png",
+      "title": "Chicken BBQ",
+      "details":
+        "juicy chicken smothered in a tangy barbecue sauce. This pizza is topped with a blend of melted cheeses, red onions, and cilantro, offering a perfect balance of smoky, sweet, and zesty flavors.",
+      "sprice": 130,
+      "mprice": 220,
+      "lprice": 280,
+      "ssize": "Small",
+      "msize": "Medium",
+      "lsize": "Large"
+      },
+    {
+      "id": 12,
+      "img": "./Images/Pizza/Buffalo.jpg",
+      "title": "Buffalo Poppers",
+      "details": "Chicken Poppers,Beef Bacon, Onions, Jalapeno Pepper, Ranch Sauce with Buffalo Sauce Drizzled on top.",
+      "sprice": 170,
+      "mprice": 240,
+      "lprice": 300,
+      "ssize": "Small",
+      "msize": "Medium",
+      "lsize": "Large"
+    }
+]
