@@ -27,6 +27,13 @@ PizzaHub is a fully functional restaurant website that allows users to browse th
 
 ## Technologies Used
 
+- Frontend: HTML5, CSS3, JavaScript, React
+- Backend: typescript, Express.js, MongoDB
+- Database: MongoDB
+- Authentication: Passport.js
+- UI Library: Material-UI
+- Testing Framework: Jest
+
 ### Frontend
 
 - **React.js:** A JavaScript library for building user interfaces.
@@ -39,13 +46,12 @@ PizzaHub is a fully functional restaurant website that allows users to browse th
 
 ### Backend
 
-- **Node.js:** A JavaScript runtime built on Chrome's V8 JavaScript engine.
+- **Typescript:** A strongly typed programming language that builds on JavaScript, providing better tooling at any scale.
 - **Express.js:** A minimal and flexible Node.js web application framework.
 - **MongoDB:** A NoSQL database for storing user data, orders, and menu items.
 - **Mongoose:** An Object Data Modeling (ODM) library for MongoDB and Node.js.
 - **Bcrypt:** For password hashing and verification.
 - **JSON Web Tokens (JWT):** For secure user authentication and authorization.
-- **Stripe:** For payment gateway integration.
 - **Multer:** For handling multipart/form-data requests.
 - **Express-Validator:** For validating user input and requests.
 
@@ -54,7 +60,7 @@ PizzaHub is a fully functional restaurant website that allows users to browse th
 - **Vite:** A frontend build tool that provides fast development and optimized builds.
 - **npm:** Node package manager for managing dependencies.
 - **dotenv:** For managing environment variables.
-- **Heroku:** A cloud platform for deploying and hosting the application.
+- **Digital Ocean:** A cloud platform for deploying and hosting the application.
 - **MongoDB Atlas:** A cloud-based MongoDB service for hosting the database.
 
 ## Installation
