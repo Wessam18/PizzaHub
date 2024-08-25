@@ -2,7 +2,7 @@
 
 PizzaHub is a fully functional restaurant website that allows users to browse the menu, place orders, and contact the restaurant. The website is built with modern web technologies, providing a seamless user experience across all devices.
 
-![Homepage](/WhatsApp%20Image%202024-08-20%20at%2021.57.02_1e68eb40.jpg)
+![Homepage](/Cover.jpg)
 
 ## Table of Contents
 
@@ -88,14 +88,14 @@ cd PizzaHub
 
 For any questions or issues, please contact me us at:
 
-- **Email:**
+- **Email:** <wessamabdelnabi903@gmail.com>
 - **Github:** Wessam18
 
-- **Email:**
-- **Github:** 99omniaashraf
-
-- **Email:**
+- **Email:** <Hossamelsa7afy54@gmail.com>
 - **Github:** hossamelsahafy
+
+- **Email:** <omniaashraf249@gmail.com>
+- **Github:** 99omniaashraf
 
 - **Email:** <kmido9729@gmail.com>
 - **Github:** mohamehk-77

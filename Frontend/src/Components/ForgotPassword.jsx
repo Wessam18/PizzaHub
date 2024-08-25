@@ -19,8 +19,6 @@ const ForgotPassword = () => {
 
       try {
         const response = await axios.post('http://localhost:5000/users/ForgotPassword', data);
-        console.log('Response:', response);
-
         if (response.status === 200) {
           setMessageType('success');
           setMessage('Password reset link has been sent to your email!');

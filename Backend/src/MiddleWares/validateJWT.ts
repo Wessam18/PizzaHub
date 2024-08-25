@@ -1,5 +1,5 @@
 import  { Request, Response, NextFunction } from 'express'
-import userModel from '../../models/userModel'
+import userModel from '../models/userModel'
 import jwt from 'jsonwebtoken'
 import { ExtendRequest } from '../types/ExtendReq'
 

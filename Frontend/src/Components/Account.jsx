@@ -67,7 +67,6 @@ const Account = () => {
         },
       });
   
-      console.log('Response:', response.data);
   
       if (response.status === 200) {
         const updatedUser = response.data.user;

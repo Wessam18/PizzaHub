@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "dev": "NODE_NO_WARNINGS=1 nodemon --watch src --exec ts-node ./src/index.ts"
+    "dev": "set NODE_NO_WARNINGS=1 && nodemon --watch src --exec ts-node ./src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+
   },
   "keywords": [],
   "author": "",
@@ -12,6 +15,7 @@
   "dependencies": {
     "@types/node": "^22.4.0",
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
