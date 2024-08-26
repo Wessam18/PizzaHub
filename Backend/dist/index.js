@@ -44,6 +44,6 @@ app.get('/appitizer', function (req, res) {
 (0, appitizerService_1.seedInitialAppitizers)();
 (0, drinkService_1.seedInitialDrinks)();
 (0, pizzaService_1.seedInitialPizzas)();
-app.listen(port, function () {
+app.listen(port, '0.0.0.0', function () {
     console.log("Server Is Running On Port ".concat(port));
 });

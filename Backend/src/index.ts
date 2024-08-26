@@ -50,6 +50,6 @@ seedInitialDrinks()
 seedInitialPizzas()
 
 
-app.listen(port, () =>{
+app.listen(port, '0.0.0.0', () =>{
     console.log(`Server Is Running On Port ${port}`);
 });
