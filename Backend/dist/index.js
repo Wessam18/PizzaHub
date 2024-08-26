@@ -38,6 +38,9 @@ app.use('/confirm', OrderRoutes_1.default);
 app.use('/pizza', pizzaRoute_1.default);
 app.use('/appitizer', appitizerRoute_1.default);
 app.use('/contact', contactRoute_1.default);
+app.get('/appitizer', function (req, res) {
+    res.json({ message: "Appetizer data here" });
+});
 (0, appitizerService_1.seedInitialAppitizers)();
 (0, drinkService_1.seedInitialDrinks)();
 (0, pizzaService_1.seedInitialPizzas)();

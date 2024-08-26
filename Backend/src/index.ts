@@ -41,6 +41,10 @@ app.use('/pizza', pizzasRoute);
 app.use('/appitizer', appitizersRoute)
 app.use('/contact', contactRoute);
 
+app.get('/appitizer', (req, res) => {
+    res.json({ message: "Appetizer data here" });
+  });
+
 seedInitialAppitizers()
 seedInitialDrinks()
 seedInitialPizzas()
