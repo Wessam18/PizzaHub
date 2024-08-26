@@ -21,7 +21,7 @@ const port = 5000;
 app.use(express.json())
 
 const corsOptions = {
-    origin: 'https://your-frontend-url.vercel.app',
+    origin: 'https://pizza-hub-peach.vercel.app/',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 };
