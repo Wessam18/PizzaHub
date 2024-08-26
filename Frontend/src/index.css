@@ -97,7 +97,7 @@ h1 {
 }
 
 @keyframes fade {
-  0% { background-image: url('../public/Images/Covers/Covers/Cover1.png'); }
+  0% { background-image: url('/Images/Covers/Covers/Cover1.png'); }
   33% { background-image: url('../src/assets/Images/Covers/Cover2.png'); }
   66% { background-image: url('../src/assets/Images/Covers/Cover3.png'); }
   100% { background-image: url('../src/assets/Images/Covers/Cover1.png'); }
