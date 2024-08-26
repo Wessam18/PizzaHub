@@ -20,8 +20,13 @@ const port = 5000;
 
 app.use(express.json())
 
-app.use(cors());
+const corsOptions = {
+    origin: 'https://your-frontend-url.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+};
 
+app.use(cors(corsOptions));
 
 mongoose
     .connect(process.env.MONGODB_URI)
