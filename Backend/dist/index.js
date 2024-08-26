@@ -22,7 +22,7 @@ var app = (0, express_1.default)();
 var port = 5000;
 app.use(express_1.default.json());
 var corsOptions = {
-    origin: 'https://your-frontend-url.vercel.app',
+    origin: 'https://pizza-hub-peach.vercel.app/',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 };
