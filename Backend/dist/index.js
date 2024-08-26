@@ -21,7 +21,12 @@ dotenv_1.default.config();
 var app = (0, express_1.default)();
 var port = 5000;
 app.use(express_1.default.json());
-app.use((0, cors_1.default)());
+var corsOptions = {
+    origin: 'https://your-frontend-url.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+};
+app.use((0, cors_1.default)(corsOptions));
 mongoose_1.default
     .connect(process.env.MONGODB_URI)
     .then(function () { return console.log('Mongo Connected Successfully!'); })
