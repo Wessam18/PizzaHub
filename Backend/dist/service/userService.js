@@ -38,7 +38,7 @@ const register = async ({ name, email, phoneNumber, password }) => {
         token: verificationToken
     });
     await token.save();
-    const verificationLink = `https://pizzahub.me/users/${newUser._id}/verify/${verificationToken}`;
+    const verificationLink = `https://pizza-hub-peach.vercel.app:5000/users/${newUser._id}/verify/${verificationToken}`;
     const emailOptions = {
         to: email,
         subject: 'Please verify your email address',
@@ -69,7 +69,7 @@ const signin = async ({ email, password }) => {
                 });
                 await token.save();
                 // Send verification email
-                const verificationLink = `https://pizzahub.me/users/${findUser._id}/verify/${verificationToken}`;
+                const verificationLink = `https://pizza-hub-peach.vercel.app:5000/users/${findUser._id}/verify/${verificationToken}`;
                 const emailOptions = {
                     to: email,
                     subject: 'Please verify your email address',
@@ -217,7 +217,7 @@ const resendVerificationEmail = async (email) => {
             await token.save();
         }
         // Send verification email
-        const verificationLink = `https://pizzahub.me/users/${user._id}/verify/${token.token}`;
+        const verificationLink = `https://pizza-hub-peach.vercel.app:5000/users/${user._id}/verify/${token.token}`;
         const emailOptions = {
             to: email,
             subject: 'Please verify your email address',

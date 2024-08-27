@@ -28,9 +28,9 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const VreifyEmail = async ({ to, subject, html }) => {
     const transporter = nodemailer.createTransport({
-        host: 'smtp.office365.com',
-        port: 587,
-        secure: false,
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT),
+        secure: process.env.SMTP_SECURE === 'true',
         auth: {
             user: process.env.EMAIL_VALID,
             pass: process.env.EMAILVALID_PASS,

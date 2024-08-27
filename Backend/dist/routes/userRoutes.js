@@ -109,7 +109,7 @@ router.post('/ForgotPassword', async (req, res) => {
         }
         const secret = process.env.JWT_SECRET;
         const token = jsonwebtoken_1.default.sign({ id: user._id }, secret, { expiresIn: "1d" });
-        const resetLink = `https://pizza-hub-peach.vercel.app/ResetPassword/${user._id}/${token}`;
+        const resetLink = `https://pizzahub.me/ResetPassword/${user._id}/${token}`;
         await (0, SendVrifyMail_1.default)({
             to: email,
             subject: 'Reset Your Password',

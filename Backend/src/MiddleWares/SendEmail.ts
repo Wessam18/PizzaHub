@@ -12,9 +12,9 @@ interface EmailOptions {
 
 const sendEmail = async ({ to, subject, html }: EmailOptions) => {
     const transporter = nodemailer.createTransport({
-        host: 'smtp.office365.com',
-        port: 587,
-        secure: false,
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_HOST),
+        secure: process.env.SMTP_SECURE === 'true',
         auth: {
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,

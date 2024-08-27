@@ -112,7 +112,7 @@ router.get("/:id/verify/:token", async (req, res) => {
       const secret = process.env.JWT_SECRET as string;
       const token = jwt.sign({ id: user._id }, secret, { expiresIn: "1d" });
 
-      const resetLink = `https://pizza-hub-peach.vercel.app/ResetPassword/${user._id}/${token}`;
+      const resetLink = `https://pizzahub.me/ResetPassword/${user._id}/${token}`;
 
       await VreifyEmail({
           to: email,
