@@ -23,12 +23,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose_1 = __importStar(require("mongoose"));
-var drinksSchema = new mongoose_1.Schema({
+const mongoose_1 = __importStar(require("mongoose"));
+const drinksSchema = new mongoose_1.Schema({
     title: { type: String, required: true },
     image: { type: String, required: true },
     price: { type: Number, required: true },
     itemType: { type: String, default: "Drinks" }
 });
-var drinksModel = mongoose_1.default.model('drinks', drinksSchema);
+const drinksModel = mongoose_1.default.model('drinks', drinksSchema);
 exports.default = drinksModel;

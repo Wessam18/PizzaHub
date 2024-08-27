@@ -109,10 +109,10 @@ router.get("/:id/verify/:token", async (req, res) => {
       if (!user) {
           return res.status(404).send({ status: "User Doesn't Exist" });
       }
+      const secret = process.env.JWT_SECRET as string;
+      const token = jwt.sign({ id: user._id }, secret, { expiresIn: "1d" });
 
-      const token = jwt.sign({ id: user._id }, "F6F5BB625C8298836B7574DF71DFD", { expiresIn: "1d" });
-
-      const resetLink = `http://localhost:5173/ResetPassword/${user._id}/${token}`;
+      const resetLink = `https://pizza-hub-peach.vercel.app/ResetPassword/${user._id}/${token}`;
 
       await VreifyEmail({
           to: email,
@@ -140,7 +140,8 @@ router.post('/ResetPassword/:id/:token', async (req: Request, res: Response) => 
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const secret = process.env.JWT_SECRET as string;
+    const decoded = jwt.verify(token, secret);
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const result = await userModel.findByIdAndUpdate(id, { password: hashedPassword }, { new: true });
@@ -151,12 +152,17 @@ router.post('/ResetPassword/:id/:token', async (req: Request, res: Response) => 
     res.status(200).json({ status: "Success" });
 
   } catch (error) {
+  if (error instanceof Error) {
     if (error.name === 'JsonWebTokenError') {
       return res.status(400).json({ status: "Invalid token" });
     }
 
-    console.error('Error during password reset:', error);
-    res.status(500).json({ status: "Error during password reset" });
+    console.error('Error during password reset:', error.message);
+    return res.status(500).json({ status: "Error during password reset" });
+  } else {
+    console.error('Unknown error during password reset:', error);
+    return res.status(500).json({ status: "An unknown error occurred" });
+  }
   }
 });
 

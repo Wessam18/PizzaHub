@@ -23,13 +23,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose_1 = __importStar(require("mongoose"));
-var appitizersSchema = new mongoose_1.Schema({
+const mongoose_1 = __importStar(require("mongoose"));
+const appitizersSchema = new mongoose_1.Schema({
     title: { type: String, required: true },
     image: { type: String, required: true },
     details: { type: String, required: true },
     price: { type: Number, required: true },
     itemType: { type: String, default: "Appitizers" }
 });
-var appitizersModel = mongoose_1.default.model('appitizers', appitizersSchema);
+const appitizersModel = mongoose_1.default.model('appitizers', appitizersSchema);
 exports.default = appitizersModel;

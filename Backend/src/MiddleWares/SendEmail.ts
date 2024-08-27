@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
 import { generateRandomNumbers, storeVerificationCodes, verifyCode } from './VreifyEmail'
+
+const dotenv = require('dotenv');
 dotenv.config();
 
 interface EmailOptions {
