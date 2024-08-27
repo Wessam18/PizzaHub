@@ -1,24 +1,15 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.seedInitialAppitizers = exports.getAllAppitizers = void 0;
 const appitizerModel_1 = __importDefault(require("../models/appitizerModel"));
-const getAllAppitizers = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield appitizerModel_1.default.find();
-});
+const getAllAppitizers = async () => {
+    return await appitizerModel_1.default.find();
+};
 exports.getAllAppitizers = getAllAppitizers;
-const seedInitialAppitizers = () => __awaiter(void 0, void 0, void 0, function* () {
+const seedInitialAppitizers = async () => {
     const products = [
         {
             image: "https://www.papajohnsegypt.com/images/Products/Bread-Sticks.jpg",
@@ -77,9 +68,9 @@ const seedInitialAppitizers = () => __awaiter(void 0, void 0, void 0, function* 
             itemType: "Appitizers"
         },
     ];
-    const existedAppitizers = yield (0, exports.getAllAppitizers)();
+    const existedAppitizers = await (0, exports.getAllAppitizers)();
     if (existedAppitizers.length === 0) {
-        yield appitizerModel_1.default.insertMany(products);
+        await appitizerModel_1.default.insertMany(products);
     }
-});
+};
 exports.seedInitialAppitizers = seedInitialAppitizers;

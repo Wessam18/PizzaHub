@@ -1,24 +1,15 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.seedInitialPizzas = exports.getAllPizzas = void 0;
 const pizzaModel_1 = __importDefault(require("../models/pizzaModel"));
-const getAllPizzas = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield pizzaModel_1.default.find();
-});
+const getAllPizzas = async () => {
+    return await pizzaModel_1.default.find();
+};
 exports.getAllPizzas = getAllPizzas;
-const seedInitialPizzas = () => __awaiter(void 0, void 0, void 0, function* () {
+const seedInitialPizzas = async () => {
     const products = [
         {
             image: "https://store.eurostarfoods.co.uk/cdn/shop/articles/Pizza-Margarita-Frumenta_900x.jpg?v=1631279490",
@@ -165,9 +156,9 @@ const seedInitialPizzas = () => __awaiter(void 0, void 0, void 0, function* () {
             itemType: "Pizza"
         },
     ];
-    const existedPizzas = yield (0, exports.getAllPizzas)();
+    const existedPizzas = await (0, exports.getAllPizzas)();
     if (existedPizzas.length === 0) {
-        yield pizzaModel_1.default.insertMany(products);
+        await pizzaModel_1.default.insertMany(products);
     }
-});
+};
 exports.seedInitialPizzas = seedInitialPizzas;

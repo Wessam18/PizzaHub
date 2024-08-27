@@ -12,6 +12,8 @@ import dotenv from 'dotenv';
 import { seedInitialAppitizers } from './service/appitizerService';
 import { seedInitialDrinks } from './service/drinkService';
 import { seedInitialPizzas } from './service/pizzaService';
+import fs from 'fs';
+import https from 'https';
 
 dotenv.config();
 
@@ -50,15 +52,12 @@ seedInitialAppitizers();
 seedInitialDrinks();
 seedInitialPizzas();
 
-app.get('/appitizer', (req, res) => {
-    res.json({ message: "Appetizer data here" });
-  });
+const options = {
+    key: fs.readFileSync('/etc/letsencrypt/live/pizzahub.me/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/pizzahub.me/fullchain.pem'),
+};
 
-seedInitialAppitizers()
-seedInitialDrinks()
-seedInitialPizzas()
-
-
-app.listen(port, () =>{
-    console.log(`Server Is Running On Port ${port}`);
+https.createServer(options, app).listen(port, () => {
+    console.log(`Server is running on https://localhost:${port}`);
 });
+

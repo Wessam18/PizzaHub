@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -25,17 +16,17 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const SendVrifyMail_1 = __importDefault(require("../MiddleWares/SendVrifyMail"));
 const router = express_1.default.Router();
 const userService_3 = require("../service/userService");
-router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/signup', async (req, res) => {
     const { name, email, phoneNumber, password } = req.body;
-    const { statusCode, data } = yield (0, userService_1.register)({ name, email, phoneNumber, password });
+    const { statusCode, data } = await (0, userService_1.register)({ name, email, phoneNumber, password });
     res.status(statusCode).send(data);
-}));
-router.post('/signin', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+});
+router.post('/signin', async (req, res) => {
     const { email, password } = req.body;
-    const { statusCode, data } = yield (0, userService_1.signin)({ email, password });
+    const { statusCode, data } = await (0, userService_1.signin)({ email, password });
     res.status(statusCode).send(data);
-}));
-router.put('/account', validateJWT_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+});
+router.put('/account', validateJWT_1.default, async (req, res) => {
     var _a;
     const { name, email, phoneNumber, currentPassword, newPassword } = req.body;
     const userId = (_a = req === null || req === void 0 ? void 0 : req.user) === null || _a === void 0 ? void 0 : _a._id;
@@ -43,7 +34,7 @@ router.put('/account', validateJWT_1.default, (req, res) => __awaiter(void 0, vo
         return res.status(401).send({ message: 'Unauthorized' });
     }
     try {
-        const { data, statusCode } = yield (0, userService_2.updateUser)({ userId, name, email, phoneNumber, currentPassword, newPassword });
+        const { data, statusCode } = await (0, userService_2.updateUser)({ userId, name, email, phoneNumber, currentPassword, newPassword });
         res.status(statusCode).send(data);
     }
     catch (error) {
@@ -56,12 +47,12 @@ router.put('/account', validateJWT_1.default, (req, res) => __awaiter(void 0, vo
             res.status(500).send({ message: 'An unknown error occurred' });
         }
     }
-}));
-router.get('/account', validateJWT_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _b;
+});
+router.get('/account', validateJWT_1.default, async (req, res) => {
+    var _a;
     try {
-        const userId = (_b = req === null || req === void 0 ? void 0 : req.user) === null || _b === void 0 ? void 0 : _b._id;
-        const user = yield userModel_1.default.findById(userId);
+        const userId = (_a = req === null || req === void 0 ? void 0 : req.user) === null || _a === void 0 ? void 0 : _a._id;
+        const user = await userModel_1.default.findById(userId);
         if (!user) {
             return res.status(404).send({ message: 'User not found' });
         }
@@ -70,15 +61,15 @@ router.get('/account', validateJWT_1.default, (req, res) => __awaiter(void 0, vo
     catch (error) {
         res.status(500).send({ message: 'An error occurred while fetching user data' });
     }
-}));
-router.delete('/account', validateJWT_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _c;
+});
+router.delete('/account', validateJWT_1.default, async (req, res) => {
+    var _a;
     try {
-        const userId = (_c = req === null || req === void 0 ? void 0 : req.user) === null || _c === void 0 ? void 0 : _c._id;
+        const userId = (_a = req === null || req === void 0 ? void 0 : req.user) === null || _a === void 0 ? void 0 : _a._id;
         if (!userId) {
             return res.status(400).send({ message: 'User ID is missing' });
         }
-        const user = yield userModel_1.default.findByIdAndDelete(userId);
+        const user = await userModel_1.default.findByIdAndDelete(userId);
         if (!user) {
             return res.status(404).send({ message: 'User not found' });
         }
@@ -88,38 +79,38 @@ router.delete('/account', validateJWT_1.default, (req, res) => __awaiter(void 0,
         console.error('Error deleting user:', error);
         res.status(500).send({ message: 'An error occurred while deleting the user' });
     }
-}));
-router.get("/:id/verify/:token", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+});
+router.get("/:id/verify/:token", async (req, res) => {
     try {
-        const user = yield userModel_1.default.findById(req.params.id);
+        const user = await userModel_1.default.findById(req.params.id);
         if (!user)
             return res.status(400).send({ message: "Invalid Link" });
-        const token = yield Token.findOne({ userId: user._id, token: req.params.token });
+        const token = await Token.findOne({ userId: user._id, token: req.params.token });
         if (!token)
             return res.status(400).send({ message: "Invalid Link" });
         user.verified = true;
-        yield user.save();
-        setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
-            yield token.deleteOne();
-        }), 15000);
+        await user.save();
+        setTimeout(async () => {
+            await token.deleteOne();
+        }, 15000);
         res.status(200).send({ message: "Email Verified Successfully" });
     }
     catch (error) {
         console.error('Error during email verification:', error); // Log the error details
         res.status(500).send({ message: 'An error occurred while verifying the user' });
     }
-}));
-router.post('/ForgotPassword', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+});
+router.post('/ForgotPassword', async (req, res) => {
     const { email } = req.body;
     try {
-        const user = yield userModel_1.default.findOne({ email });
+        const user = await userModel_1.default.findOne({ email });
         if (!user) {
             return res.status(404).send({ status: "User Doesn't Exist" });
         }
         const secret = process.env.JWT_SECRET;
         const token = jsonwebtoken_1.default.sign({ id: user._id }, secret, { expiresIn: "1d" });
         const resetLink = `https://pizza-hub-peach.vercel.app/ResetPassword/${user._id}/${token}`;
-        yield (0, SendVrifyMail_1.default)({
+        await (0, SendVrifyMail_1.default)({
             to: email,
             subject: 'Reset Your Password',
             html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`,
@@ -130,8 +121,8 @@ router.post('/ForgotPassword', (req, res) => __awaiter(void 0, void 0, void 0, f
         console.error('Error during password reset:', error);
         res.status(500).send({ status: 'An error occurred while sending the password reset email.' });
     }
-}));
-router.post('/ResetPassword/:id/:token', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+});
+router.post('/ResetPassword/:id/:token', async (req, res) => {
     const { id, token } = req.params;
     const { password } = req.body;
     if (!id || !token || !password) {
@@ -140,8 +131,8 @@ router.post('/ResetPassword/:id/:token', (req, res) => __awaiter(void 0, void 0,
     try {
         const secret = process.env.JWT_SECRET;
         const decoded = jsonwebtoken_1.default.verify(token, secret);
-        const hashedPassword = yield bcrypt_1.default.hash(password, 10);
-        const result = yield userModel_1.default.findByIdAndUpdate(id, { password: hashedPassword }, { new: true });
+        const hashedPassword = await bcrypt_1.default.hash(password, 10);
+        const result = await userModel_1.default.findByIdAndUpdate(id, { password: hashedPassword }, { new: true });
         if (!result) {
             return res.status(404).json({ status: "User not found" });
         }
@@ -160,10 +151,10 @@ router.post('/ResetPassword/:id/:token', (req, res) => __awaiter(void 0, void 0,
             return res.status(500).json({ status: "An unknown error occurred" });
         }
     }
-}));
-router.post('/resend-verification-email', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+});
+router.post('/resend-verification-email', async (req, res) => {
     const { email } = req.body;
-    const result = yield (0, userService_3.resendVerificationEmail)(email);
+    const result = await (0, userService_3.resendVerificationEmail)(email);
     res.status(result.statusCode).json(result);
-}));
+});
 exports.default = router;

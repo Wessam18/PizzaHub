@@ -17,6 +17,8 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const appitizerService_1 = require("./service/appitizerService");
 const drinkService_1 = require("./service/drinkService");
 const pizzaService_1 = require("./service/pizzaService");
+const fs_1 = __importDefault(require("fs"));
+const https_1 = __importDefault(require("https"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = 5000;
@@ -46,12 +48,10 @@ app.use('/contact', contactRoute_1.default);
 (0, appitizerService_1.seedInitialAppitizers)();
 (0, drinkService_1.seedInitialDrinks)();
 (0, pizzaService_1.seedInitialPizzas)();
-app.get('/appitizer', (req, res) => {
-    res.json({ message: "Appetizer data here" });
-});
-(0, appitizerService_1.seedInitialAppitizers)();
-(0, drinkService_1.seedInitialDrinks)();
-(0, pizzaService_1.seedInitialPizzas)();
-app.listen(port, () => {
-    console.log(`Server Is Running On Port ${port}`);
+const options = {
+    key: fs_1.default.readFileSync('/etc/letsencrypt/live/pizzahub.me/privkey.pem'),
+    cert: fs_1.default.readFileSync('/etc/letsencrypt/live/pizzahub.me/fullchain.pem'),
+};
+https_1.default.createServer(options, app).listen(port, () => {
+    console.log(`Server is running on https://localhost:${port}`);
 });
