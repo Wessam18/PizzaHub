@@ -46,7 +46,25 @@ const Header = () => {
       <Link to={url} style={{ fontWeight: 'bold', fontSize: '22px' }}>{title}</Link>
     </li>
   ));
-
+  const createFadeAnimation = () => {
+    return `
+      @keyframes fade {
+        0% { background-image: url(${cover1}); }
+        33% { background-image: url(${cover2}); }
+        66% { background-image: url(${cover3}); }
+        100% { background-image: url(${cover1}); }
+      }
+    `;
+  };
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = createFadeAnimation();
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+  // comment
   const handleProfileMenuToggle = () => {
     if (isAuth) {
       navigate('/account')

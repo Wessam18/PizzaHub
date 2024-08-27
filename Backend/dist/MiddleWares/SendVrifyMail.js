@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-const VreifyEmail = (_a) => __awaiter(void 0, [_a], void 0, function* ({ to, subject, html }) {
+const VreifyEmail = ({ to, subject, html }) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = nodemailer_1.default.createTransport({
         host: 'smtp.office365.com',
         port: 587,

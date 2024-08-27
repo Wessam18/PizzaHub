@@ -28,7 +28,7 @@ const handleContactForm = (contactDetails) => __awaiter(void 0, void 0, void 0, 
     try {
         // Send the contact form email
         yield (0, SendEmail_1.sendEmail)({
-            to: `${email}, PizzaHubStuff@outlook.com`, // Send to user and a fixed recipient
+            to: `${email}, PizzaHubStuff@outlook.com`,
             subject: 'Contact Form Submission',
             html: emailHtml,
         });

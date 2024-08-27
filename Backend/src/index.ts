@@ -20,7 +20,7 @@ const port = 5000;
 
 // CORS configuration
 const corsOptions = {
-    origin: '',
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 };
@@ -44,12 +44,21 @@ app.use('/pizza', pizzasRoute);
 app.use('/appitizer', appitizersRoute);
 app.use('/contact', contactRoute);
 
+
 // Seed initial data
 seedInitialAppitizers();
 seedInitialDrinks();
 seedInitialPizzas();
 
-// Start the server
-app.listen(port, () => {
+app.get('/appitizer', (req, res) => {
+    res.json({ message: "Appetizer data here" });
+  });
+
+seedInitialAppitizers()
+seedInitialDrinks()
+seedInitialPizzas()
+
+
+app.listen(port, () =>{
     console.log(`Server Is Running On Port ${port}`);
 });

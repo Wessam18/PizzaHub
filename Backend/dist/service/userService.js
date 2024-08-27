@@ -23,7 +23,7 @@ const generateToken = () => crypto_1.default.randomBytes(20).toString('hex');
 const generateJWT = (data) => {
     return jsonwebtoken_1.default.sign(data, process.env.JWT_SECRET || "default_secret_key", { expiresIn: "24h" });
 };
-const register = (_a) => __awaiter(void 0, [_a], void 0, function* ({ name, email, phoneNumber, password }) {
+const register = ({ name, email, phoneNumber, password }) => __awaiter(void 0, void 0, void 0, function* () {
     const findUserByEmail = yield userModel_1.default.findOne({ email });
     if (findUserByEmail) {
         return { data: "Email Already Exists!", statusCode: 400 };
@@ -57,7 +57,7 @@ const register = (_a) => __awaiter(void 0, [_a], void 0, function* ({ name, emai
     return { data: "Verification email sent. Please check your inbox.", statusCode: 200 };
 });
 exports.register = register;
-const signin = (_a) => __awaiter(void 0, [_a], void 0, function* ({ email, password }) {
+const signin = ({ email, password }) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Find the user by email
         const findUser = yield userModel_1.default.findOne({ email });
@@ -116,7 +116,7 @@ const generatedJWT = (data) => {
         expiresIn: "24h",
     });
 };
-const updateUser = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userId, name, email, phoneNumber, currentPassword, newPassword, }) {
+const updateUser = ({ userId, name, email, phoneNumber, currentPassword, newPassword, }) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user = yield userModel_1.default.findById(userId);
         if (!user) {

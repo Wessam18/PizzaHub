@@ -22,7 +22,7 @@ const app = (0, express_1.default)();
 const port = 5000;
 // CORS configuration
 const corsOptions = {
-    origin: '',
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 };
@@ -46,7 +46,12 @@ app.use('/contact', contactRoute_1.default);
 (0, appitizerService_1.seedInitialAppitizers)();
 (0, drinkService_1.seedInitialDrinks)();
 (0, pizzaService_1.seedInitialPizzas)();
-// Start the server
+app.get('/appitizer', (req, res) => {
+    res.json({ message: "Appetizer data here" });
+});
+(0, appitizerService_1.seedInitialAppitizers)();
+(0, drinkService_1.seedInitialDrinks)();
+(0, pizzaService_1.seedInitialPizzas)();
 app.listen(port, () => {
     console.log(`Server Is Running On Port ${port}`);
 });

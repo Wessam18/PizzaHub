@@ -17,12 +17,12 @@ const cartModel_1 = require("../models/cartModel");
 const pizzaModel_1 = __importDefault(require("../models/pizzaModel"));
 const appitizerModel_1 = __importDefault(require("../models/appitizerModel"));
 const drinkModel_1 = __importDefault(require("../models/drinkModel"));
-const CreateCartUser = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userId }) {
+const CreateCartUser = ({ userId }) => __awaiter(void 0, void 0, void 0, function* () {
     const cart = yield cartModel_1.CartModel.create({ userId, total: 0 });
     yield cart.save();
     return cart;
 });
-const getActiveCart = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userId }) {
+const getActiveCart = ({ userId }) => __awaiter(void 0, void 0, void 0, function* () {
     let cart = yield cartModel_1.CartModel.findOne({ userId, status: "active" });
     if (!cart) {
         cart = yield CreateCartUser({ userId });
@@ -30,7 +30,7 @@ const getActiveCart = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userI
     return cart;
 });
 exports.getActiveCart = getActiveCart;
-const addItemToCart = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userId, itemId, quantity, size, itemType }) {
+const addItemToCart = ({ userId, itemId, quantity, size, itemType }) => __awaiter(void 0, void 0, void 0, function* () {
     const cart = yield (0, exports.getActiveCart)({ userId });
     let item, price, title;
     switch (itemType) {

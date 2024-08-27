@@ -58,9 +58,9 @@ router.put('/account', validateJWT_1.default, (req, res) => __awaiter(void 0, vo
     }
 }));
 router.get('/account', validateJWT_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
+    var _b;
     try {
-        const userId = (_a = req === null || req === void 0 ? void 0 : req.user) === null || _a === void 0 ? void 0 : _a._id;
+        const userId = (_b = req === null || req === void 0 ? void 0 : req.user) === null || _b === void 0 ? void 0 : _b._id;
         const user = yield userModel_1.default.findById(userId);
         if (!user) {
             return res.status(404).send({ message: 'User not found' });
@@ -72,9 +72,9 @@ router.get('/account', validateJWT_1.default, (req, res) => __awaiter(void 0, vo
     }
 }));
 router.delete('/account', validateJWT_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
+    var _c;
     try {
-        const userId = (_a = req === null || req === void 0 ? void 0 : req.user) === null || _a === void 0 ? void 0 : _a._id;
+        const userId = (_c = req === null || req === void 0 ? void 0 : req.user) === null || _c === void 0 ? void 0 : _c._id;
         if (!userId) {
             return res.status(400).send({ message: 'User ID is missing' });
         }
