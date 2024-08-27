@@ -46,6 +46,7 @@ const Header = () => {
       document.head.removeChild(style);
     };
   }, []);
+  // comment
   const handleProfileMenuToggle = () => {
     if (isAuth) {
       navigate('/account')
