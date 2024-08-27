@@ -22,24 +22,6 @@ const Header = () => {
   const { name, isAuth } = useAuth();
 
   const navigate = useNavigate();
-  const createFadeAnimation = () => {
-    return `
-      @keyframes fade {
-        0% { background-image: url(${cover1}); }
-        33% { background-image: url(${cover2}); }
-        66% { background-image: url(${cover3}); }
-        100% { background-image: url(${cover1}); }
-      }
-    `;
-  };
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.innerHTML = createFadeAnimation();
-    document.head.appendChild(style);
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
 
   const link = navData.map(([id, title, url]) => (
     <li className="navlink" key={id} onClick={() => setMenuOpen(false)}>
