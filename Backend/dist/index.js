@@ -24,7 +24,7 @@ const app = (0, express_1.default)();
 const port = 5000;
 // CORS configuration
 const corsOptions = {
-    origin: '*',
+    origin: ['https://pizza-hub-peach.vercel.app', 'https://pizzahub.me'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 };
