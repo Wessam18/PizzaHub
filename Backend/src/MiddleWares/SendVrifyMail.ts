@@ -25,7 +25,7 @@ const VreifyEmail = async ({ to, subject, html }: EmailOptions) => {
 
     // Define the mail options, including the sender, recipient, subject, and content of the email
     const mailOptions = {
-        from: process.env.SANBOX_USER, // The email address that will appear as the sender
+        from: process.env.EMAIL_VALID, // The email address that will appear as the sender
         to, // The recipient's email address
         subject, // The subject of the email
         html, // The HTML content of the email
