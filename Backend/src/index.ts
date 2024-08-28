@@ -4,7 +4,6 @@ import usersRoutes from './routes/userRoutes'
 import drinksRoutes from './routes/drinksRoutes'
 import pizzasRoute from './routes/pizzaRoute'
 import appitizersRoute from './routes/appitizerRoute'
-import cartRoutes from './routes/CartRoutes'
 import cors from 'cors';
 import orderRoutes from './routes/OrderRoutes'
 import contactRoute from './routes/contactRoute'
@@ -28,7 +27,6 @@ mongoose
 
 app.use('/users', usersRoutes);
 app.use('/drinks', drinksRoutes);
-app.use('/cart', cartRoutes);
 app.use('/confirm', orderRoutes)
 app.use('/pizza', pizzasRoute);
 app.use('/appitizer', appitizersRoute)
