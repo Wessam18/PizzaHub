@@ -1,46 +1,63 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import usersRoutes from './routes/userRoutes'
-import drinksRoutes from './routes/drinksRoutes'
-import pizzasRoute from './routes/pizzaRoute'
-import appitizersRoute from './routes/appitizerRoute'
-
-import cartRoutes from './routes/CartRoutes'
+import express from 'express';
+import mongoose from 'mongoose';
+import usersRoutes from './routes/userRoutes';
+import drinksRoutes from './routes/drinksRoutes';
+import pizzasRoute from './routes/pizzaRoute';
+import appitizersRoute from './routes/appitizerRoute';
+import cartRoutes from './routes/CartRoutes';
 import cors from 'cors';
-import orderRoutes from './routes/OrderRoutes'
-import contactRoute from './routes/contactRoute'
-import dotenv from 'dotenv'
-import { seedInitialAppitizers } from './service/appitizerService'
-import { seedInitialDrinks } from './service/drinkService'
-import { seedInitialPizzas } from './service/pizzaService'
-dotenv.config()
+import orderRoutes from './routes/OrderRoutes';
+import contactRoute from './routes/contactRoute';
+import dotenv from 'dotenv';
+import { seedInitialAppitizers } from './service/appitizerService';
+import { seedInitialDrinks } from './service/drinkService';
+import { seedInitialPizzas } from './service/pizzaService';
+import fs from 'fs';
+import https from 'https';
 
-const app = express()
+dotenv.config();
+
+const app = express();
 const port = 5000;
 
-app.use(express.json())
+// CORS configuration
+const corsOptions = {
+    origin: ['https://pizza-hub-peach.vercel.app', 'https://pizzahub.me'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+};
 
-app.use(cors());
+// Apply CORS globally
+app.use(cors(corsOptions));
+app.use(express.json());
 
+mongoose.connect(process.env.MONGODB_URI as string, {
+    serverSelectionTimeoutMS: 30000 // Increase timeout to 30 seconds
+})
+.then(() => console.log('Mongo Connected Successfully!'))
+.catch((err) => console.log('Failed to connect to MongoDB', err));
 
-mongoose
-    .connect(process.env.MONGODB_URI)
-    .then(() => console.log('Mongo Connected Successfully!'))
-    .catch((err) => console.log('Failed to connect to MongoDB', err));
-
+// Route setup
 app.use('/users', usersRoutes);
 app.use('/drinks', drinksRoutes);
 app.use('/cart', cartRoutes);
-app.use('/confirm', orderRoutes)
+app.use('/confirm', orderRoutes);
 app.use('/pizza', pizzasRoute);
-app.use('/appitizer', appitizersRoute)
+app.use('/appitizer', appitizersRoute);
 app.use('/contact', contactRoute);
 
-seedInitialAppitizers()
-seedInitialDrinks()
-seedInitialPizzas()
 
+// Seed initial data
+seedInitialAppitizers();
+seedInitialDrinks();
+seedInitialPizzas();
 
-app.listen(port, () =>{
-    console.log(`Server Is Running On Port ${port}`);
+const options = {
+    key: fs.readFileSync('/etc/letsencrypt/live/pizzahub.me/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/pizzahub.me/fullchain.pem'),
+};
+
+https.createServer(options, app).listen(port, () => {
+    console.log(`Server is running on https://localhost:${port}`);
 });
+
