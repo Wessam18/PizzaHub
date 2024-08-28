@@ -96,14 +96,12 @@ h1 {
   animation: slideIn 10s ease-in-out infinite;
 }
 
-/*
 @keyframes fade {
   0% { background-image: url('./src/assets/Images/Covers/Cover1.png'); }
   33% { background-image: url('./src/assets/Images/Covers/Cover2.png'); }
   66% { background-image: url('./src/assets/Images/Covers/Cover3.png'); }
   100% { background-image: url('./src/assets/Images/Covers/Cover1.png'); }
 }
-*/
 
 @keyframes slideIn {
   0% { transform: translateX(-100%); opacity: 0; }

@@ -24,9 +24,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CartModel = void 0;
-const mongoose_1 = __importStar(require("mongoose"));
-const cartStatusEnum = ["active", "completed"];
-const cartItemSchema = new mongoose_1.Schema({
+var mongoose_1 = __importStar(require("mongoose"));
+var cartStatusEnum = ["active", "completed"];
+var cartItemSchema = new mongoose_1.Schema({
     pizza: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Pizza' },
     appetizers: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Appetizers' },
     drink: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Drinks' },
@@ -35,7 +35,7 @@ const cartItemSchema = new mongoose_1.Schema({
     title: { type: String, required: true },
     size: { type: String },
 });
-const cartSchema = new mongoose_1.Schema({
+var cartSchema = new mongoose_1.Schema({
     userId: { type: mongoose_1.Schema.Types.ObjectId, ref: "User", required: true },
     items: [cartItemSchema],
     total: { type: Number, required: true },

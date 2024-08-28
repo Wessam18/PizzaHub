@@ -1,7 +1,6 @@
-"use strict";
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const tokenSchema = new Schema({
+var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
+var tokenSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
         required: true,

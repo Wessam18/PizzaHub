@@ -82,7 +82,7 @@ const Dashboard = () => {
           navigate('/successOrder'); // Correct usage of navigate
           setTimeout(() => {
             navigate('/'); // Navigate to home after 3 seconds
-          }, 10000);
+          }, 3000);
         }
         setOrderConfirmed(true);
         setUserInfo({

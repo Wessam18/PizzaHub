@@ -23,8 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = __importStar(require("mongoose"));
-const orderItemSchema = new mongoose_1.Schema({
+var mongoose_1 = __importStar(require("mongoose"));
+var orderItemSchema = new mongoose_1.Schema({
     pizza: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Pizza' },
     appetizers: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Appetizers' },
     drink: { type: mongoose_1.Schema.Types.ObjectId, ref: 'Drinks' },
@@ -33,7 +33,7 @@ const orderItemSchema = new mongoose_1.Schema({
     title: { type: String, required: true },
     size: { type: String }
 });
-const orderSchema = new mongoose_1.Schema({
+var orderSchema = new mongoose_1.Schema({
     userId: { type: mongoose_1.Schema.Types.ObjectId, ref: 'User', required: true },
     name: { type: String, required: true },
     email: { type: String, required: true },

@@ -9,13 +9,13 @@ export const fetchContact = async (contactData) => {
         });
 
         if (!res.ok) {
-            throw new Error(`HTTP error! Status: ${res.status}`);
+            // throw new Error(`HTTP error! Status: ${res.status}`);
         }
 
         const data = await res.json();
         return data;
     } catch (error) {
-        console.error('Error fetching contact data:', error);
-        throw error;
+        // console.error('Error fetching contact data:', error);
+        // throw error;
     }
 };

@@ -1,8 +1,6 @@
-import * as nodemailer from 'nodemailer';
-import * as dotenv from 'dotenv';
-
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 dotenv.config();
-
 
 interface EmailOptions {
     to: string;
@@ -12,17 +10,17 @@ interface EmailOptions {
 
 const VreifyEmail = async ({ to, subject, html }: EmailOptions) => {
     const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT),
-        secure: process.env.SMTP_SECURE === 'true',
+        host: 'sandbox.smtp.mailtrap.io',
+        port: 587,
+        secure: false,
         auth: {
-            user: process.env.EMAIL_VALID,
-            pass: process.env.EMAILVALID_PASS,
+            user: '23539170d45b56',
+            pass: '13735bbc8215cd',
         },
     });
 
     const mailOptions = {
-        from: process.env.EMAIL_VALID,
+        from: '23539170d45b56',
         to,
         subject,
         html,

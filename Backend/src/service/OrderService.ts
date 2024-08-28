@@ -3,25 +3,13 @@ import { sendEmail } from '../MiddleWares/SendEmail';
 import { CartModel } from '../models/cartModel';
 import OrderModel from '../models/orderModel';
 
-// Define an interface for each item in the order
-interface OrderItem {
-    itemId: string;
-    title: string;
-    quantity: number;
-    totalPrice: number;
-    size?: string;
-    drink?: boolean;
-    appetizers?: boolean;
-}
-
-// Define the OrderDetails interface
 interface OrderDetails {
     userId: string;
     name: string;
     email: string;
     phoneNumber: string;
     address: string;
-    items: OrderItem[];  // items is an array of OrderItem
+    items: any
 }
 
 const confirmOrder = async (orderDetails: OrderDetails) => {
@@ -31,7 +19,6 @@ const confirmOrder = async (orderDetails: OrderDetails) => {
         return { message: 'No items to process' };
     }
 
-    // Construct the email HTML content
     const emailHtml = `
         <h1>Order Confirmation</h1>
         <p>Thank you for your order, ${name}!</p>
@@ -43,7 +30,7 @@ const confirmOrder = async (orderDetails: OrderDetails) => {
         </ul>
         <h2>Order Details:</h2>
         <ul>
-            ${items.map((item: OrderItem) => `
+            ${items.map(item => `
                 <li>
                     ${item.size ? 'Pizza: ' : item.drink ? 'Drink: ' : item.appetizers ? 'Appetizer: ' : ''}${item.title} 
                     ${item.size ? `(Size: ${item.size})` : ''}
@@ -52,38 +39,36 @@ const confirmOrder = async (orderDetails: OrderDetails) => {
                 </li>
             `).join('')}
         </ul>
-        <p>Total: ${items.reduce((total: number, item: OrderItem) => total + item.totalPrice, 0)}</p>
+        <p>Total: ${items.reduce((total, item) => total + item.totalPrice, 0)}</p>
     `;
 
     try {
-        // Send the order confirmation email
         await sendEmail({
             to: `${email}, PizzaHubStuff@outlook.com`,
             subject: 'Order Confirmation',
             html: emailHtml,
         });
 
-        // Create a new order in the database
         const newOrder = new OrderModel({
             userId: userId,
             name: name,
             email: email,
             phone: phoneNumber,
             address: address,
-            items: items.map((item: OrderItem) => ({
+            items: items.map(item => ({
                 itemId: item.itemId,
                 title: item.title,
                 quantity: item.quantity,
                 price: item.totalPrice / item.quantity,
                 size: item.size
             })),
-            total: items.reduce((total: number, item: OrderItem) => total + item.totalPrice, 0),
+            total: items.reduce((total, item) => total + item.totalPrice, 0),
             status: 'completed'
         });
 
         await newOrder.save();
 
-        // Optionally clear the user's cart after confirming the order
+        // Optionally clear the cart if needed
         await clearUserCart(userId);
 
         return { message: 'Order confirmed and email sent' }; // Success message
@@ -93,4 +78,4 @@ const confirmOrder = async (orderDetails: OrderDetails) => {
     }
 };
 
-export default confirmOrder;
+export default confirmOrder

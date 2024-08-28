@@ -1,7 +1,6 @@
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 import { generateRandomNumbers, storeVerificationCodes, verifyCode } from './VreifyEmail'
-
-const dotenv = require('dotenv');
 dotenv.config();
 
 interface EmailOptions {
@@ -12,12 +11,15 @@ interface EmailOptions {
 
 const sendEmail = async ({ to, subject, html }: EmailOptions) => {
     const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_HOST),
-        secure: process.env.SMTP_SECURE === 'true',
+        host: 'smtp.office365.com',
+        port: 587,
+        secure: false,
         auth: {
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,
+        },
+        tls: {
+            ciphers: 'SSLv3', // Add this line
         },
     });
 
