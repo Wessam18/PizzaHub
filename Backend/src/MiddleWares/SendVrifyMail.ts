@@ -14,13 +14,13 @@ const VreifyEmail = async ({ to, subject, html }: EmailOptions) => {
         port: 587,
         secure: false,
         auth: {
-            user: '23539170d45b56',
-            pass: '13735bbc8215cd',
+            user: process.env.SANBOX_USER,
+            pass: process.env.SANDBOX_PASS,
         },
     });
 
     const mailOptions = {
-        from: '23539170d45b56',
+        from: process.env.SANBOX_USER,
         to,
         subject,
         html,
