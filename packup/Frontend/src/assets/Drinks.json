@@ -1,0 +1,23 @@
+[
+  {
+    "id": 21,
+    "img": "./Images/Pizza/Pepsi.jpg",
+    "title": "Pepsi",
+    "details": " ",
+    "price": 20
+  },
+  {
+    "id": 22,
+    "img": "./Images/Pizza/Mirinda.jpg",
+    "title": "Mirinda",
+    "details": "",
+    "price": 20
+  },
+  {
+    "id": 23,
+    "img": "./Images/Pizza/Water.jpeg",
+    "title": "Mineral Water",
+    "details": " ",
+    "price": 20
+  }
+]
