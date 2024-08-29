@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document, Types } from "mongoose";
-import { ICartItem } from "./cartModel";
 
 export interface IOrderItem {
     pizza?: Types.ObjectId;
