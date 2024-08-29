@@ -10,17 +10,17 @@ interface EmailOptions {
 
 const VreifyEmail = async ({ to, subject, html }: EmailOptions) => {
     const transporter = nodemailer.createTransport({
-        host: 'sandbox.smtp.mailtrap.io',
+        host: 'smtp.office365.com',
         port: 587,
         secure: false,
         auth: {
-            user: process.env.SANBOX_USER,
-            pass: process.env.SANDBOX_PASS,
+            user: process.env.EMAIL_VALID,
+            pass: process.env.EMAILVALID_PASS,
         },
     });
 
     const mailOptions = {
-        from: process.env.SANBOX_USER,
+        from: process.env.EMAIL_VALID,
         to,
         subject,
         html,

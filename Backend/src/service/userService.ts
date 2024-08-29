@@ -38,7 +38,7 @@ export const register = async ({ name, email, phoneNumber, password }) => {
         userId: newUser._id,
         token: verificationToken
     });
-    
+
     await token.save();
 
     const verificationLink = `http://localhost:5173/users/${newUser._id}/verify/${verificationToken}`;
