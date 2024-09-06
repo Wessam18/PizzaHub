@@ -1,6 +1,6 @@
-import { getActiveCart, clearUserCart } from './CartService';
+//import { getActiveCart, clearUserCart } from './CartService';
 import { sendEmail } from '../MiddleWares/SendEmail';
-import { CartModel } from '../models/cartModel';
+//import { CartModel } from '../models/cartModel';
 import OrderModel from '../models/orderModel';
 
 interface OrderDetails {
@@ -69,7 +69,7 @@ const confirmOrder = async (orderDetails: OrderDetails) => {
         await newOrder.save();
 
         // Optionally clear the cart if needed
-        await clearUserCart(userId);
+       // await clearUserCart(userId);
 
         return { message: 'Order confirmed and email sent' }; // Success message
     } catch (error) {
