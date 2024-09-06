@@ -14,7 +14,8 @@ interface EmailOptions {
 const VreifyEmail = async ({ to, subject, html }: EmailOptions) => {
     // Create a transporter object using nodemailer, configured with the SMTP server details
     const transporter = nodemailer.createTransport({
-        host: 'smtp.office365.com', // SMTP server address for Office 365
+        service: 'gmail',
+        host: 'smtp.gmail.com', // SMTP server address for google
         port: 587, // Port number for the SMTP server (587 for STARTTLS)
         secure: false, // Use STARTTLS (false) instead of SSL (true)
         auth: {
@@ -25,7 +26,10 @@ const VreifyEmail = async ({ to, subject, html }: EmailOptions) => {
 
     // Define the mail options, including the sender, recipient, subject, and content of the email
     const mailOptions = {
-        from: process.env.EMAIL_VALID, // The email address that will appear as the sender
+        from: {
+            name: "PizzaHubSupport",
+            address: process.env.EMAIL_VALID // The email address that will appear as the sender
+        },
         to, // The recipient's email address
         subject, // The subject of the email
         html, // The HTML content of the email

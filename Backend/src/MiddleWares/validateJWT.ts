@@ -2,6 +2,9 @@ import  { Request, Response, NextFunction } from 'express'
 import userModel from '../models/userModel'
 import jwt from 'jsonwebtoken'
 import { ExtendRequest } from '../types/ExtendReq'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const validateJWT = (req: ExtendRequest,  res: Response, next: NextFunction) => {
     const authHeader = req.get('authorization')
@@ -14,7 +17,7 @@ const validateJWT = (req: ExtendRequest,  res: Response, next: NextFunction) => 
         res.status(403).send("Bearer Token Not Found")
         return;
     }
-    jwt.verify(token, 'F6F5BB625C8298836B7574DF71DFD', async (err, payload) => {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, payload) => {
         if(err) {
             res.status(403).send("Invalid Token")
             return;
