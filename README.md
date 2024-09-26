@@ -1,7 +1,3 @@
-Here’s a cool design structure for the README file to make it visually appealing and organized:
-
----
-
 # 🍕 Pizza Delivery App 🍕  
 *Your one-stop shop for pizza cravings!*
 
