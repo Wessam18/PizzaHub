@@ -58,13 +58,13 @@ cd pizza-delivery-app
 
 ### Step 2: Install Backend Dependencies  
 ```bash
-cd backend
+cd Backend
 npm install
 ```
 
 ### Step 3: Install Frontend Dependencies  
 ```bash
-cd frontend
+cd Frontend
 npm install
 ```
 
@@ -73,13 +73,13 @@ npm install
 
 ### Step 5: Start the Backend Server  
 ```bash
-cd backend
+cd Backend
 npm run dev
 ```
 
 ### Step 6: Start the Frontend Development Server  
 ```bash
-cd frontend
+cd Frontend
 npm start
 ```
 
