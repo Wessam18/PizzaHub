@@ -1,13 +1,15 @@
 Pizza Delivery App
+
 Welcome to the Pizza Delivery App, a full-stack application built using the MERN stack. This project features a robust backend developed in TypeScript with Express and a dynamic frontend created with React. Our choice of MongoDB allows for a flexible and easy-to-use database solution.
 
-Demo Link
+Demo Link:
 https://drive.google.com/file/d/1OOEk41qp6aYnfjk685VqOi1vyiWBaIg3/view?usp=drive_link
 
 Team
 Meet our team on LinkedIn:
 
 https://www.linkedin.com/in/hossam-elsahafy-4b8648248/
+
 https://www.linkedin.com/in/wessam-abdelnabi-3261751ba/
 
 Features
@@ -33,18 +35,21 @@ To set up the project locally, follow these steps:
 Clone the repository:
 
 bash
+
 git clone https://github.com/Wessam18/PizzaHub
 cd pizza-delivery-app
 
 Install the backend dependencies:
 
 bash
+
 cd backend
 npm install
 
 Install the frontend dependencies:
 
 bash
+
 cd frontend
 npm install
 Set up environment variables (if necessary) in both the backend and frontend directories.
@@ -52,10 +57,12 @@ Set up environment variables (if necessary) in both the backend and frontend dir
 Start the backend server:
 
 bash
+
 cd backend
 npm run dev
 Start the frontend development server:
 
 bash
+
 cd frontend
 npm start
