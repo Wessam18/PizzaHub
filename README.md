@@ -96,7 +96,3 @@ This project is licensed under the MIT License.
 
 ## ❤️ Acknowledgments  
 Special thanks to **Wessam Abdelnabi** and **Hossam Elsahafy** for their amazing collaboration in making this app possible!
-
----
-
-By structuring the README with emojis, section dividers, and clear formatting, it adds a polished look that’s easy to navigate and visually engaging!
