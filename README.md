@@ -53,7 +53,6 @@ Follow these steps to run the app locally:
 ### Step 1: Clone the Repository  
 ```bash
 git clone https://github.com/Wessam18/PizzaHub
-cd pizza-delivery-app
 ```
 
 ### Step 2: Install Backend Dependencies  
@@ -80,7 +79,7 @@ npm run dev
 ### Step 6: Start the Frontend Development Server  
 ```bash
 cd Frontend
-npm start
+npm run dev
 ```
 
 ---
